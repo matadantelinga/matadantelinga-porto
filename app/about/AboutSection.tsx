@@ -7,7 +7,7 @@ import ErrorNetwork from "@/components/errorNetwork";
 
 function ListPost() {
     const getQuery = async () => {
-        return await getDataOpen("/posts1")
+        return await getDataOpen("/posts")
     }
     const query = useQuery({
         queryKey: ["postsx"],
