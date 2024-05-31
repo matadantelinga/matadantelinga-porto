@@ -4,7 +4,7 @@ import React from 'react'
 import { FaFacebookF, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import Ask from "./Ask";
-
+import moment from "moment";
 
 export default function Footer() {
     return (
@@ -50,7 +50,7 @@ export default function Footer() {
             </div>
             <div className="bg-[#E2E2E2] py-3">
                 <div className="wrapper">
-                    &copy; 2024 Planet Dekor
+                    &copy; {moment().format("YYYY")} Planet Dekor
                 </div>
             </div>
         </div>

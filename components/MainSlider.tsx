@@ -9,6 +9,7 @@ import { useQuery } from "@tanstack/react-query"
 import { getData } from "@/lib/services";
 import ErrorNetwork from "@/components/errorNetwork";
 import Skeleton from "@/components/Skeleton";
+import { getMainBanners } from "@/lib/data";
 
 
 const settings = {
@@ -26,7 +27,7 @@ function ItemSlide({ link, image }: { link?: string, image: string }) {
         <div className="w-full h-[calc(100vh-89px)] relative">
             <Link href={link ? link : "/"}>
                 <Image
-                    src={`${image}`}
+                    src={`${image ? image : "/images/noimage.jpg"}`}
                     fill
                     objectFit="cover"
                     alt="image"
@@ -37,12 +38,9 @@ function ItemSlide({ link, image }: { link?: string, image: string }) {
 }
 
 export default function MainSlider() {
-    const getQuery = async () => {
-        return await getData("/main-banners?populate=*")
-    }
     const query = useQuery({
         queryKey: ["qMainBanner"],
-        queryFn: getQuery
+        queryFn: getMainBanners
     })
 
     if (query.isLoading) {
@@ -74,7 +72,7 @@ export default function MainSlider() {
                             <ItemSlide
                                 key={item.id}
                                 link="/"
-                                image={`${process.env.URL_MEDIA + item.attributes.image.data.attributes.url}`}
+                                image={`${process.env.URL_MEDIA + item?.attributes.image?.data.attributes.url}`}
                             />
                         )
                     }) : null
