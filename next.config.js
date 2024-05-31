@@ -7,6 +7,15 @@ const nextConfig = {
         KEY_API: process.env.KEY_API
     },
     reactStrictMode: true,
+    images: {
+        remotePatterns: [
+            {
+                protocol: "https",
+                hostname: "superadmin.planetdekor.id",
+                pathname: "**",
+            },
+        ],
+    }
 }
 
 module.exports = nextConfig

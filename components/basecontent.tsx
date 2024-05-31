@@ -12,7 +12,7 @@ interface iBase {
 export default function Basecontent(props: iBase) {
     return (
         <QueryClientProvider client={queryClient}>
-            <div className="text-[#262B35]">{props.children}</div>
+            <div>{props.children}</div>
         </QueryClientProvider>
     )
 }
