@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    @apply text-c-black bg-slate-100 dark:text-slate-50 dark:bg-slate-900
+}
+
+.wrapper {
+    @apply w-full max-w-[1296px] mx-auto px-2
+}
+
+.mainslider .slick-dots {
+    @apply absolute bottom-20 right-0 left-0 z-10
+}
+
+.mainslider .slick-dots li {
+    @apply w-[40px] h-[6px] bg-yellow-50
+}
+
+.mainslider .slick-dots li.slick-active {
+    @apply bg-c-yellow
+}
+
+.mainslider .slick-dots li button {
+    @apply w-[40px] h-[6px] opacity-0
+}
+
+.mainslider .slick-dots li button:before {
+    @apply w-[40px] h-[6px] 
+}
