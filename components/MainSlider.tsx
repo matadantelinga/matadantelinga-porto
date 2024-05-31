@@ -14,7 +14,7 @@ const settings = {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
 };
 
 function ItemSlide({ link, image }: { link?: string, image: string }) {

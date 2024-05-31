@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-    @apply text-c-black bg-slate-100 dark:text-slate-50 dark:bg-slate-900
+    @apply text-c-black bg-slate-100 dark:text-slate-50 dark:bg-slate-900 text-[16px]
 }
 
 .wrapper {

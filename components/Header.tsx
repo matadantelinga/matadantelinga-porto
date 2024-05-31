@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 
 export default function Header() {
     return (
-        <div className="sticky top-0 bg-white z-10">
+        <div className="sticky top-0 bg-white z-20 ">
             <div className="wrapper flex items-center justify-between py-3">
                 <div className="relative flex items-center gap-11">
                     <Link href="/"><Image src="/images/logo.png" width={66} height={66} alt="logo" /></Link>
