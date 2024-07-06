@@ -4,7 +4,7 @@ export default function PrivacyPolicyPage() {
   return (
     <>
       <section className="wrapper py-10">
-        <SectionTitle className="mb-4">Syarat dan Ketentuan</SectionTitle>
+        <SectionTitle className="mb-4">Kebijakan Privasi</SectionTitle>
         <p className="mb-4">
           At PlanetDekor.id, we prioritize the privacy and security of our
           users. This Privacy Policy outlines how we collect, use, and safeguard

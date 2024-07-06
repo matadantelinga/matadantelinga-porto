@@ -74,7 +74,7 @@ export default function Footer() {
                 <Link href="/privacy-policy">Kebijakan Privasi</Link>
               </li>
               <li>
-                <Link href="/">Syarat & Ketentuan</Link>
+                <Link href="/terms-condition">Syarat & Ketentuan</Link>
               </li>
             </ul>
           </div>
