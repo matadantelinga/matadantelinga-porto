@@ -1,5 +1,5 @@
 import MainSlider from "@/components/Homepage/MainSlider";
-import RoomDesign from "@/components/Homepage/RoomDesign";
+import RoomDesign from "@/components/Homepage/RoomDesign/RoomDesign";
 import SearchMain from "@/components/Homepage/SearchMain";
 import Basecontent from "@/components/basecontent";
 
@@ -7,13 +7,13 @@ export default function Home() {
   return (
     <div className="relative">
       <Basecontent>
-        <div className="relative">
+        <section className="relative">
           <MainSlider />
           <SearchMain />
-        </div>
-        <div className="wrapper">
+        </section>
+        <section className="wrapper py-10">
           <RoomDesign />
-        </div>
+        </section>
       </Basecontent>
     </div>
   );
