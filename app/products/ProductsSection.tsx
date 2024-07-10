@@ -2,7 +2,7 @@
 import Basecontent from "@/components/basecontent";
 import { getData, getDataOpen } from "@/lib/services";
 import { useQuery } from "@tanstack/react-query";
-import ErrorNetwork from "@/components/errorNetwork";
+import ErrorNetwork from "@/components/ErrorNetwork";
 import Skeleton from "@/components/Shared/Skeleton";
 import { PageBanner } from "@/components/Shared/Pagebanner";
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { SectionTitle } from "@/components/ui/section-title";
-import DreamStepper from "./DreamStepper";
+import DreamStepper from "./DreamAccordion";
 
 export default function DreamDesign() {
   return (
