@@ -4,6 +4,7 @@ import { getData, getDataOpen } from "@/lib/services";
 import { useQuery } from "@tanstack/react-query";
 import ErrorNetwork from "@/components/errorNetwork";
 import Skeleton from "@/components/Shared/Skeleton";
+import { PageBanner } from "@/components/Shared/Pagebanner";
 
 function ListPost() {
   const getQuery = async () => {
@@ -46,10 +47,14 @@ function ListPost() {
   );
 }
 
-export default function AboutSection() {
+export default function ProductsSection() {
   return (
     <div>
       <Basecontent>
+        <PageBanner
+          pageBannerTitle="Cari Desain Sesuai Keinginanmu"
+          imageUrl=""
+        ></PageBanner>
         <ListPost />
       </Basecontent>
     </div>

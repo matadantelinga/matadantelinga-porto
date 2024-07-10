@@ -36,6 +36,7 @@ module.exports = {
         "c-black2": "#3A3541",
         "c-red": "#FB3131",
         "c-gray": "#EBEBEB",
+        "c-white": "#ffffff",
       },
     },
   },

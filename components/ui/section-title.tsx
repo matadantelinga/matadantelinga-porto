@@ -1,13 +1,13 @@
 "use client";
-import { cva, type VariantProps } from "class-variance-authority";
-import * as React from "react";
 import { cn } from "@/lib/utils";
+import { cva, VariantProps } from "class-variance-authority";
+import React from "react";
 
 export const sectionTitleVariants = cva("font-bold", {
   variants: {
     color: {
-      black: "text-black",
-      white: "text-white",
+      black: "text-c-black",
+      white: "text-c-white",
     },
     fontSize: {
       "36px": "text-4xl", // 36px converted to Tailwind's text-4xl
@@ -23,8 +23,12 @@ const SectionTitle = React.forwardRef<
   HTMLHeadingElement,
   React.ComponentPropsWithoutRef<"h2"> &
     VariantProps<typeof sectionTitleVariants>
->(({ className, ...props }, ref) => (
-  <h2 ref={ref} className={cn(sectionTitleVariants(), className)} {...props} />
+>(({ className, color, fontSize, ...props }, ref) => (
+  <h2
+    ref={ref}
+    className={cn(sectionTitleVariants({ color, fontSize }), className)}
+    {...props}
+  />
 ));
 
 SectionTitle.displayName = "SectionTitle";

@@ -1,5 +1,5 @@
 "use client";
-import ErrorNetwork from "@/components/errorNetwork";
+
 import { getMainBanners } from "@/lib/data";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
@@ -7,6 +7,7 @@ import Link from "next/link";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
+import ErrorNetwork from "../ErrorNetwork";
 
 const settings = {
   arrow: true,
