@@ -1,8 +1,15 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import { ExploreRoomBanner } from "./ExploreRoomBanner";
 import { SectionTitle } from "@/components/ui/section-title";
+import useHomepageContentStore from "@/hooks/useHomepage";
 
 export default function RoomDesign() {
+  const { homepageContent, setHomepageContent } = useHomepageContentStore();
+
+  useEffect(() => {
+    console.log(homepageContent);
+  }, []);
   return (
     <>
       <div className="w-full">
