@@ -1,0 +1,24 @@
+#pageBanner {
+  background-color: #fad925;
+  max-height: 400px;
+  overflow: hidden;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  h2 {
+    font-size: 3rem;
+    font-weight: bold;
+    max-width: 45%;
+  }
+
+  .bannerImg {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+  }
+  img {
+    object-fit: cover;
+  }
+}

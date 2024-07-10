@@ -10,9 +10,13 @@ export const PageBanner: React.FC<iPageBanner> = ({
   imageUrl,
 }) => {
   return (
-    <section className="w-full py-5">
-      <h2>{pageBannerTitle}</h2>
-      <img src={imageUrl} alt="" />
+    <section id="pageBanner" className="w-full py-5">
+      <div className="wrapper">
+        <h2>{pageBannerTitle}</h2>
+        <figure className="bannerImg">
+          <img src={imageUrl} alt="" />
+        </figure>
+      </div>
     </section>
   );
 };
