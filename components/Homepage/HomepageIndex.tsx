@@ -6,7 +6,6 @@ import MainSlider from "./MainSlider";
 import RoomDesign from "./RoomDesign/RoomDesign";
 import SearchMain from "./SearchMain";
 import { getAllHomepageContents } from "@/lib/services/homePageServices";
-import ErrorNetwork from "../ErrorNetwork";
 import { useEffect } from "react";
 import useHomepageContentStore from "@/hooks/useHomepage";
 
@@ -18,9 +17,6 @@ export default function HomepageIndex() {
     queryFn: getAllHomepageContents,
   });
 
-  if (query.isError) {
-    return <ErrorNetwork />;
-  }
 
   useEffect(() => {
     const data = query?.data?.data;

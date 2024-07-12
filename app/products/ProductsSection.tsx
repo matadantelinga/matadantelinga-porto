@@ -2,7 +2,6 @@
 import Basecontent from "@/components/basecontent";
 import { getData, getDataOpen } from "@/lib/services";
 import { useQuery } from "@tanstack/react-query";
-import ErrorNetwork from "@/components/ErrorNetwork";
 import Skeleton from "@/components/Shared/Skeleton";
 import { PageBanner } from "@/components/Shared/Pagebanner";
 
@@ -23,13 +22,7 @@ function ListPost() {
     );
   }
 
-  if (query.isError) {
-    return (
-      <div className="max-w-[900px] mx-auto">
-        <ErrorNetwork />
-      </div>
-    );
-  }
+
 
   const dataContents = query.data?.data;
 

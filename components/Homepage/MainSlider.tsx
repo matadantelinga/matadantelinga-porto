@@ -7,7 +7,6 @@ import Link from "next/link";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
-import ErrorNetwork from "../ErrorNetwork";
 
 const settings = {
   arrow: true,
@@ -57,9 +56,6 @@ export default function MainSlider() {
     );
   }
 
-  if (query.isError) {
-    return <ErrorNetwork />;
-  }
 
   const dataContent = query?.data?.data.data;
 
@@ -68,17 +64,16 @@ export default function MainSlider() {
       <Slider {...settings}>
         {dataContent
           ? dataContent.map((item: any) => {
-              return (
-                <ItemSlide
-                  key={item.id}
-                  link="/"
-                  image={`${
-                    process.env.URL_MEDIA +
-                    item?.attributes.image?.data.attributes.url
+            return (
+              <ItemSlide
+                key={item.id}
+                link="/"
+                image={`${process.env.URL_MEDIA +
+                  item?.attributes.image?.data.attributes.url
                   }`}
-                />
-              );
-            })
+              />
+            );
+          })
           : null}
       </Slider>
     </div>
