@@ -7,22 +7,37 @@ import RoomDesign from "./RoomDesign/RoomDesign";
 import SearchMain from "./SearchMain";
 import { getAllHomepageContents } from "@/lib/services/homePageServices";
 import { useEffect } from "react";
-import useHomepageContentStore from "@/hooks/useHomepage";
+import { getHomePage } from "@/lib/data";
+import Image from "next/image";
 
 export default function HomepageIndex() {
-  const { homepageContent, setHomepageContent } = useHomepageContentStore();
-
   const query = useQuery({
-    queryKey: ["qHomeAllContents"],
-    queryFn: getAllHomepageContents,
+    queryKey: ["qHomePage"],
+    queryFn: getHomePage,
   });
 
 
-  useEffect(() => {
-    const data = query?.data?.data;
-    setHomepageContent(data);
-    console.log(data);
-  }, []);
+  if (query.isLoading) {
+    return (
+      <div className=" relative flex justify-center ">
+        <div className="animate-pulse w-full">
+          <div className="rounded-sm bg-slate-200 h-[calc(100vh-89px)] w-full flex justify-center items-center ">
+            <Image
+              src="/images/loading.svg"
+              width={100}
+              height={100}
+              alt="loading"
+            />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+
+  const dataContent = query?.data?.data.data.attributes;
+
+  console.log(dataContent)
 
   return (
     <>
