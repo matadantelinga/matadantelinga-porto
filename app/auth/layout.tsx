@@ -8,8 +8,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <SessionWrapper>
+    <>
       {children}
-    </SessionWrapper>
+    </>
   );
 }
