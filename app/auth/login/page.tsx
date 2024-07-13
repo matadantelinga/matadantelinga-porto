@@ -19,6 +19,7 @@ import {
 import { useRouter } from "next/navigation";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { useEffect } from "react";
+import SessionWrapper from "@/components/SessionWrapper";
 
 const signInSchema = z.object({
     email: z
@@ -32,7 +33,7 @@ const signInSchema = z.object({
 });
 
 export default function LoginPage() {
-    const { data: session, status } = useSession()
+    // const { data: session, status } = useSession()
     const router = useRouter();
     const form = useForm<z.infer<typeof signInSchema>>({
         resolver: zodResolver(signInSchema),
@@ -44,17 +45,17 @@ export default function LoginPage() {
 
     const Login = async (values: z.infer<typeof signInSchema>) => {
         const { email, password } = values;
-        const result = await signIn("credentials", {
-            email: email,
-            password: password,
-            callbackUrl: "/",
-        });
+        // const result = await signIn("credentials", {
+        //     email: email,
+        //     password: password,
+        //     callbackUrl: "/",
+        // });
 
-        if (result?.error) {
-            console.error('Login failed:', result.error);
-        } else {
-            router.push("/");
-        }
+        // if (result?.error) {
+        //     console.error('Login failed:', result.error);
+        // } else {
+        //     router.push("/");
+        // }
 
     };
     useEffect(() => {
