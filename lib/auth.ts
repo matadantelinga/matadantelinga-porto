@@ -1,5 +1,6 @@
 import type { NextAuthOptions } from "next-auth";
 import Credentials from "next-auth/providers/credentials"
+import GithubProvider from "next-auth/providers/github"
 
 interface iUser {
     id: string
@@ -51,10 +52,15 @@ export const authOptions: NextAuthOptions = {
                 if (res.ok) {
                     return user;
                 }
-                return user;
+                return null;
             }
         }
         ),
+        GithubProvider({
+            clientId: process.env.GITHUB_ID as string,
+            clientSecret: process.env.GITHUB_SECRET as string,
+        }),
+
     ],
 
     pages: {
@@ -62,30 +68,30 @@ export const authOptions: NextAuthOptions = {
         error: "*",
     },
 
-    // callbacks: {
-    //     async jwt({ token, user }: any) {
-    //         if (user) {
-    //             console.log({ user })
-    //             token.accessToken = user.token;
-    //             token.user = user.data.user;
-    //             token.message = user.message;
-    //         }
-    //         return token;
-    //     },
-    //     async session({ session, token, user }) {
-    //         session.user = token
-    //         return {
-    //             ...session,
-    //             user: {
-    //                 ...session.user,
-    //                 accessToken: token.accessToken,
-    //                 message: token.message,
-    //                 user: token.user,
-    //             },
-    //             token: token.accessToken,
-    //         };
-    //     },
-    // },
+    callbacks: {
+        async jwt({ token, user }: any) {
+            if (user) {
+                console.log({ user })
+                token.accessToken = user.token;
+                token.user = user.data.user;
+                token.message = user.message;
+            }
+            return token;
+        },
+        async session({ session, token, user }) {
+            session.user = token
+            return {
+                ...session,
+                user: {
+                    ...session.user,
+                    accessToken: token.accessToken,
+                    message: token.message,
+                    user: token.user,
+                },
+                token: token.accessToken,
+            };
+        },
+    },
 
 
 }

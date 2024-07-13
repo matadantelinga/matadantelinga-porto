@@ -4,8 +4,14 @@ import Link from "next/link";
 import Image from "next/image";
 import React from "react";
 import { Button } from "@/components/ui/button";
+import { useSession, signIn, signOut } from "next-auth/react";
+import SessionWrapper from "./SessionWrapper";
 
 export default function Header() {
+  const { data: session, status } = useSession()
+
+  console.log({ status })
+
   return (
     <div className="sticky top-0 bg-white z-20 ">
       <div className="wrapper flex items-center justify-between py-3">
