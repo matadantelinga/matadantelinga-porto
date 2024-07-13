@@ -1,3 +1,4 @@
+import axios from "axios";
 import type { NextAuthOptions } from "next-auth";
 import Credentials from "next-auth/providers/credentials"
 import GithubProvider from "next-auth/providers/github"
@@ -13,6 +14,7 @@ interface iUser {
 interface iUserResponse {
     token: string;
 }
+
 
 export const authOptions: NextAuthOptions = {
     session: {
@@ -34,25 +36,21 @@ export const authOptions: NextAuthOptions = {
             },
             async authorize(credentials) {
                 const res = await fetch(
-                    `https://superadmin.planetdekor.id/api/auth/local/`,
+                    // `${process.env.URL_API}/auth/local/`,
+                    `https://api-staging.celeparty.id/api/v1/login`,
                     {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
                         },
-                        body: JSON.stringify(
-                            {
-                                "identifier": "pras_so_jo@yahoo.co.id",
-                                "password": "123456"
-                            }
-                        ),
+                        body: JSON.stringify(credentials),
                     }
                 );
                 const user: iUser = await res.json();
                 if (res.ok) {
                     return user;
                 }
-                return null;
+                return null
             }
         }
         ),
@@ -62,6 +60,8 @@ export const authOptions: NextAuthOptions = {
         }),
 
     ],
+
+    secret: process.env.NEXTAUTH_SECRET,
 
     pages: {
         signIn: "/auth/login",
@@ -91,6 +91,8 @@ export const authOptions: NextAuthOptions = {
                 token: token.accessToken,
             };
         },
+
+
     },
 
 
