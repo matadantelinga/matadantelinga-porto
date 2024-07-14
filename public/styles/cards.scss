@@ -1,17 +1,17 @@
-.product-card {
+.post-card {
   border-radius: 13px;
   height: 100%;
   overflow: hidden;
   max-height: 315px;
   position: relative;
   cursor: pointer;
-  .product-image {
+  .post-image {
     img {
       object-fit: cover;
       object-position: center;
     }
   }
-  .product-detail {
+  .post-detail {
     &::before {
       position: absolute;
       display: block;
@@ -50,11 +50,40 @@
   }
 
   &:hover {
-    .product-detail {
+    .post-detail {
       &:before {
         transition: all ease 0.3s;
         opacity: 0.25;
       }
+    }
+  }
+}
+
+.location-card {
+  display: flex;
+  align-items: center;
+  .post-image {
+    border-radius: 13px;
+    overflow: hidden;
+    img {
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+  .post-detail {
+    background-color: #e5e5e5;
+    padding: 1rem;
+    min-width: 200px;
+    flex: 1;
+    border-top-right-radius: 13px;
+    border-bottom-right-radius: 13px;
+    min-height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    .title {
+      font-weight: bold;
     }
   }
 }
