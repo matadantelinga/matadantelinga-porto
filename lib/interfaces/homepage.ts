@@ -69,30 +69,30 @@ interface ItemSliderDreamImage {
   data: ImageData;
 }
 
-interface ItemSliderDreamItem {
+export interface ItemSliderDreamItem {
   id: number;
   title: string;
   description: string;
 }
 
-interface ItemSliderDream {
+export interface ItemSliderDream {
   id: number;
   image: ItemSliderDreamImage;
   item: ItemSliderDreamItem[];
 }
 
-interface ItemWhyImage {
+export interface ItemWhyImage {
   data: ImageData;
 }
 
-interface ItemWhy {
+export interface ItemWhy {
   id: number;
   title: string;
   description: string;
   image: ItemWhyImage;
 }
 
-interface WhyUs {
+export interface WhyUs {
   id: number;
   main_title: string | null;
   item_why: ItemWhy[];

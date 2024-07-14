@@ -19,7 +19,7 @@ export default function HomepageIndex() {
 
   if (query.isLoading) {
     return (
-      <div className=" relative flex justify-center ">
+      <div className="relative flex justify-center ">
         <div className="animate-pulse w-full">
           <div className="rounded-sm bg-slate-200 h-[calc(100vh-89px)] w-full flex justify-center items-center ">
             <Image
@@ -48,9 +48,12 @@ export default function HomepageIndex() {
       <section className="wrapper py-10">
         <RoomDesign />
       </section>
-      <section className="bg-black">
-        <div className="wrapper py-10">
-          <DreamDesign />
+      <section className="bg-c-black2 py-10">
+        <div className="wrapper">
+          <DreamDesign
+            data={dataContent.dream_design}
+            itemSliderDream={dataContent.item_slider_dream}
+          />
         </div>
       </section>
     </>

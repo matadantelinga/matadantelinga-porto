@@ -4,35 +4,36 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
+} from "@/components/ui/accordion";
+import { ItemSliderDreamItem } from "@/lib/interfaces/ihomepage";
 
 import React from "react";
 
-export default function DreamStepper() {
+interface IDreamStepperProps {
+  accordionItems: ItemSliderDreamItem[];
+}
+
+const DreamStepper: React.FC<IDreamStepperProps> = ({ accordionItems }) => {
   return (
     <>
       <div className="design-stepper text-white">
         <Accordion type="single" collapsible>
-          <AccordionItem value="item-1">
-            <AccordionTrigger className="text-blue-500">01 Konsultasi</AccordionTrigger>
-            <AccordionContent className="bg-red-200">
-              Tim akan mengirimkan desain beserta penawaran harga sesuai desain yang sudah OK, dan melakukan pembayaran 50% dari harga penawaran.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="item-1">
-            <AccordionTrigger>02 Survey Lokasi</AccordionTrigger>
-            <AccordionContent>
-              Yes. It adheres to the WAI-ARIA design pattern.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="item-1">
-            <AccordionTrigger>03 Desain</AccordionTrigger>
-            <AccordionContent>
-              Yes. It adheres to the WAI-ARIA design pattern.
-            </AccordionContent>
-          </AccordionItem>
+          {accordionItems?.map((item) => (
+            <React.Fragment key={item.id}>
+              <AccordionItem value={`item${item.id}`}>
+                <AccordionTrigger>{item.title}</AccordionTrigger>
+                <AccordionContent>
+                  <div
+                    dangerouslySetInnerHTML={{ __html: item.description }}
+                  ></div>
+                </AccordionContent>
+              </AccordionItem>
+            </React.Fragment>
+          ))}
         </Accordion>
       </div>
     </>
   );
-}
+};
+
+export default DreamStepper;
