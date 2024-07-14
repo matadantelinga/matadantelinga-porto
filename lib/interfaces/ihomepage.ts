@@ -51,7 +51,7 @@ interface Image {
   data: ImageData;
 }
 
-interface DesignRoom {
+export interface IDesignRoom {
   id: number;
   main_title: string;
   title: string;
@@ -60,7 +60,7 @@ interface DesignRoom {
   image: Image;
 }
 
-interface DreamDesign {
+export interface IDreamDesign {
   id: number;
   main_title: string;
 }
@@ -103,8 +103,8 @@ interface Attributes {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  design_room: DesignRoom;
-  dream_design: DreamDesign;
+  design_room: IDesignRoom;
+  dream_design: IDreamDesign;
   item_slider_dream: ItemSliderDream[];
   why_us: WhyUs;
 }

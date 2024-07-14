@@ -1,4 +1,4 @@
-import { HomepageContent } from "@/lib/interfaces/homepage";
+import { HomepageContent } from "@/lib/interfaces/ihomepage";
 import { create } from "zustand";
 
 interface HomepageContentState {

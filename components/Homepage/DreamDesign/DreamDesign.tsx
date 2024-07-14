@@ -1,11 +1,7 @@
 import React from "react";
 import { SectionTitle } from "@/components/ui/section-title";
 import DreamStepper from "./DreamAccordion";
-import {
-  IDesignRoom,
-  IDreamDesign,
-  ItemSliderDream,
-} from "@/lib/interfaces/ihomepage";
+import { IDreamDesign, ItemSliderDream } from "@/lib/interfaces/ihomepage";
 
 interface IDreamDesignProps {
   data: IDreamDesign;
