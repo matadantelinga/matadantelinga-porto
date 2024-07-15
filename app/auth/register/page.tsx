@@ -1,11 +1,11 @@
-"use client"
-import Image from "next/image"
-import React, { useState } from 'react'
+"use client";
+import Image from "next/image";
+import React, { useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea"
+import { Textarea } from "@/components/ui/textarea";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -40,12 +40,13 @@ const registerSchema = z.object({
     .string()
     .min(30, { message: "Isi alamat lengkap minimal 30 karakter" })
     .max(1000, { message: "Maksimal karakter untuk email yaitu 1000 huruf" }),
-
 });
 
 export default function Register() {
-  const [message, setMessage] = useState(false)
-  const [errorMessage, setErrorMessage] = useState<string | boolean | null>(false)
+  const [message, setMessage] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | boolean | null>(
+    false
+  );
   const form = useForm<z.infer<typeof registerSchema>>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
@@ -65,23 +66,28 @@ export default function Register() {
           email: values.email,
           password: values.password,
           address: values.address,
-        }
-        const response = await axios.post(`https://superadmin.planetdekor.id/api/auth/local/register`, data, {
-          headers: {
-            'Authorization': 'Bearer ' + "3a66368e134f55aca62058d052dc49d3aeeaeb24526468f6456c9d037b37486affe8ce786b0379cd8f2362a82141239aebced6c36af516479e01062792158272d166e5dc5cbd117bfbcbcb77fe23bebcb9b21ae7fc6ded8001d33d90152315a5fdd3e58ce56f4b32e8da8db3e5286947361382b5d4165e74f3a3b84cc0932124"
-          },
-        })
-        setErrorMessage(false)
-        setMessage(true)
-
+        };
+        const response = await axios.post(
+          `https://superadmin.planetdekor.id/api/auth/local/register`,
+          data,
+          {
+            headers: {
+              Authorization:
+                "Bearer " +
+                "3a66368e134f55aca62058d052dc49d3aeeaeb24526468f6456c9d037b37486affe8ce786b0379cd8f2362a82141239aebced6c36af516479e01062792158272d166e5dc5cbd117bfbcbcb77fe23bebcb9b21ae7fc6ded8001d33d90152315a5fdd3e58ce56f4b32e8da8db3e5286947361382b5d4165e74f3a3b84cc0932124",
+            },
+          }
+        );
+        setErrorMessage(false);
+        setMessage(true);
       } catch (error: any) {
         console.error("Error:", error?.response.data.error.message);
-        setErrorMessage(error?.response.data.error.message)
+        setErrorMessage(error?.response.data.error.message);
       }
-    }
+    };
     sendNow();
     form.reset();
-  }
+  };
   return (
     <div className="relative wrapper py-7 bg-c-blue my-5 ">
       <div className="w-full max-w-[500px] mx-auto p-8 bg-white text-c-black rounded-lg">
@@ -94,10 +100,15 @@ export default function Register() {
           />
         </div>
         <h1 className="text-[26px] text-center font-semibold ">Planet Dekor</h1>
-        <h2 className="font-hind font-semibold text-[24px] text-white">Register</h2>
+        <h2 className="font-hind font-semibold text-[24px] text-white">
+          Register
+        </h2>
         <div className="mt-2">
           <Form {...form}>
-            <form className="space-y-8" onSubmit={form.handleSubmit(sendRegister)}>
+            <form
+              className="space-y-8"
+              onSubmit={form.handleSubmit(sendRegister)}
+            >
               <FormField
                 control={form.control}
                 name="fullname"
@@ -180,19 +191,21 @@ export default function Register() {
               />
               <div className="mt-7 flex justify-center">
                 <div className="flex flex-col gap-2 justify-center">
-                  <Button
-                    type="submit"
-                  >
-                    Register
-                  </Button>
+                  <Button type="submit">Register</Button>
                 </div>
               </div>
             </form>
           </Form>
-          {message ? <div className="mt-1 text-green-500">Terima kasih, data Registrasi terkirim</div> : null}
-          {errorMessage ? <div className="text-c-red mt-1">{errorMessage}</div> : null}
+          {message ? (
+            <div className="mt-1 text-green-500">
+              Terima kasih, data Registrasi terkirim
+            </div>
+          ) : null}
+          {errorMessage ? (
+            <div className="text-c-red mt-1">{errorMessage}</div>
+          ) : null}
         </div>
       </div>
     </div>
-  )
+  );
 }

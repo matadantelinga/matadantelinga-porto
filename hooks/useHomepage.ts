@@ -1,9 +1,9 @@
-import { HomepageContent } from "@/lib/interfaces/ihomepage";
+import { IHomepageContent } from "@/lib/interfaces/ihomepage";
 import { create } from "zustand";
 
 interface HomepageContentState {
-  homepageContent: HomepageContent | null;
-  setHomepageContent: (content: HomepageContent) => void;
+  homepageContent: IHomepageContent | null;
+  setHomepageContent: (content: IHomepageContent) => void;
 }
 
 const useHomepageContentStore = create<HomepageContentState>((set) => ({

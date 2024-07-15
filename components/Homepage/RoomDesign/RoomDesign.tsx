@@ -1,26 +1,31 @@
 "use client";
-import React, { useEffect } from "react";
-import { ExploreRoomBanner } from "./ExploreRoomBanner";
 import { SectionTitle } from "@/components/ui/section-title";
-import useHomepageContentStore from "@/hooks/useHomepage";
+import { IDesignRoom } from "@/lib/interfaces/ihomepage";
+import React from "react";
+import { ExploreRoomBanner } from "./ExploreRoomBanner";
 
-export default function RoomDesign() {
-  const { homepageContent, setHomepageContent } = useHomepageContentStore();
+interface IRoomDesignProps {
+  data: IDesignRoom;
+}
 
-  useEffect(() => {
-    console.log(homepageContent);
-  }, []);
+const RoomDesign: React.FC<IRoomDesignProps> = ({ data }) => {
   return (
     <>
       <div className="w-full">
-        <SectionTitle>Desain Sesuai Ruangan</SectionTitle>
+        <SectionTitle>{data.title}</SectionTitle>
       </div>
-      <div className="w-full rounded-lg py-10 flex items-center justify-center">
-        <div className="w-4/12">
-          <ExploreRoomBanner></ExploreRoomBanner>
+      <div className="w-full py-10 grid grid-cols-12 gap-4">
+        <div className="col-span-12 md:col-span-4">
+          <ExploreRoomBanner
+            imgUrl={`${
+              process.env.URL_MEDIA + data?.image?.data.attributes.url
+            }`}
+          ></ExploreRoomBanner>
         </div>
-        <div className="w-8/12">b</div>
+        <div className="col-span-12 md:col-span-8">b</div>
       </div>
     </>
   );
-}
+};
+
+export default RoomDesign;

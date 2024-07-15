@@ -92,13 +92,13 @@ export interface ItemWhy {
   image: ItemWhyImage;
 }
 
-export interface WhyUs {
+export interface IWhyUs {
   id: number;
   main_title: string | null;
   item_why: ItemWhy[];
 }
 
-interface Attributes {
+export interface IHomepageContent {
   title: string;
   createdAt: string;
   updatedAt: string;
@@ -106,15 +106,5 @@ interface Attributes {
   design_room: IDesignRoom;
   dream_design: IDreamDesign;
   item_slider_dream: ItemSliderDream[];
-  why_us: WhyUs;
-}
-
-interface Data {
-  id: number;
-  attributes: Attributes;
-}
-
-export interface HomepageContent {
-  data: Data;
-  meta: Record<string, unknown>;
+  why_us: IWhyUs;
 }

@@ -87,3 +87,35 @@
     }
   }
 }
+
+.why-card {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 13px;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  .post-image {
+    background-color: #fb31313b;
+    width: 76px;
+    height: 76px;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      max-width: 40px;
+    }
+  }
+
+  .post-detail {
+    .title {
+      font-weight: bold;
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+      font-size: 1.25rem;
+    }
+  }
+}

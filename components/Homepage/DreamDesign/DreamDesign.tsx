@@ -18,7 +18,7 @@ const DreamDesign: React.FC<IDreamDesignProps> = ({
         <SectionTitle color="white">{data.main_title}</SectionTitle>
       </div>
       <div className="w-full py-10 grid grid-cols-12 gap-4">
-        <div className="col-span-6">
+        <div className="col-span-12 md:col-span-6">
           <div className="explore-banner banner-container">
             <img
               src={`${
@@ -29,7 +29,7 @@ const DreamDesign: React.FC<IDreamDesignProps> = ({
             />
           </div>
         </div>
-        <div className="col-span-6">
+        <div className="col-span-12 md:col-span-6">
           <DreamStepper accordionItems={itemSliderDream[0]?.item} />
         </div>
       </div>

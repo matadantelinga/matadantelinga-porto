@@ -9,13 +9,14 @@ import { getAllHomepageContents } from "@/lib/services/homePageServices";
 import { useEffect } from "react";
 import { getHomePage } from "@/lib/data";
 import Image from "next/image";
+import WhyChoose from "./WhyChoose/WhyChoose";
+import { IHomepageContent } from "@/lib/interfaces/ihomepage";
 
 export default function HomepageIndex() {
   const query = useQuery({
     queryKey: ["qHomePage"],
     queryFn: getHomePage,
   });
-
 
   if (query.isLoading) {
     return (
@@ -34,10 +35,9 @@ export default function HomepageIndex() {
     );
   }
 
+  const dataContent: IHomepageContent = query?.data?.data.data.attributes;
 
-  const dataContent = query?.data?.data.data.attributes;
-
-  console.log(dataContent)
+  console.log(dataContent);
 
   return (
     <>
@@ -46,7 +46,7 @@ export default function HomepageIndex() {
         <SearchMain />
       </section>
       <section className="wrapper py-10">
-        <RoomDesign />
+        <RoomDesign data={dataContent.design_room} />
       </section>
       <section className="bg-c-black2 py-10">
         <div className="wrapper">
@@ -54,6 +54,11 @@ export default function HomepageIndex() {
             data={dataContent.dream_design}
             itemSliderDream={dataContent.item_slider_dream}
           />
+        </div>
+      </section>
+      <section className="half-bg-black ">
+        <div className="wrapper py-10">
+          <WhyChoose data={dataContent.why_us}></WhyChoose>
         </div>
       </section>
     </>

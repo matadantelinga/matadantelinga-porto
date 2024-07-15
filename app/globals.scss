@@ -30,6 +30,7 @@ body {
   @apply w-[40px] h-[6px];
 }
 
+@import "/public/styles/layout.scss";
 @import "/public/styles/home.scss";
 @import "/public/styles/pageBanner.scss";
 @import "/public/styles/cards.scss";
