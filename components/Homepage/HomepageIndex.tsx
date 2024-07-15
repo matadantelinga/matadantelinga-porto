@@ -1,16 +1,14 @@
 "use client";
+import { getHomePage } from "@/lib/data";
+import { IHomepageContent } from "@/lib/interfaces/ihomepage";
 import { useQuery } from "@tanstack/react-query";
-import Basecontent from "../basecontent";
+import Image from "next/image";
 import DreamDesign from "./DreamDesign/DreamDesign";
+import LatestProject from "./LatestProject/LatestProject";
 import MainSlider from "./MainSlider";
 import RoomDesign from "./RoomDesign/RoomDesign";
 import SearchMain from "./SearchMain";
-import { getAllHomepageContents } from "@/lib/services/homePageServices";
-import { useEffect } from "react";
-import { getHomePage } from "@/lib/data";
-import Image from "next/image";
 import WhyChoose from "./WhyChoose/WhyChoose";
-import { IHomepageContent } from "@/lib/interfaces/ihomepage";
 
 export default function HomepageIndex() {
   const query = useQuery({
@@ -37,8 +35,6 @@ export default function HomepageIndex() {
 
   const dataContent: IHomepageContent = query?.data?.data.data.attributes;
 
-  console.log(dataContent);
-
   return (
     <>
       <section className="relative">
@@ -56,10 +52,13 @@ export default function HomepageIndex() {
           />
         </div>
       </section>
-      <section className="half-bg-black ">
+      <section className="half-bg-black">
         <div className="wrapper py-10">
           <WhyChoose data={dataContent.why_us}></WhyChoose>
         </div>
+      </section>
+      <section className="wrapper py-10">
+        <LatestProject></LatestProject>
       </section>
     </>
   );

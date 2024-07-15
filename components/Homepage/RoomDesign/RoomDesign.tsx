@@ -3,6 +3,7 @@ import { SectionTitle } from "@/components/ui/section-title";
 import { IDesignRoom } from "@/lib/interfaces/ihomepage";
 import React from "react";
 import { ExploreRoomBanner } from "./ExploreRoomBanner";
+import { GridWrapper } from "@/components/Shared/GridWrapper";
 
 interface IRoomDesignProps {
   data: IDesignRoom;
@@ -14,7 +15,7 @@ const RoomDesign: React.FC<IRoomDesignProps> = ({ data }) => {
       <div className="w-full">
         <SectionTitle>{data.title}</SectionTitle>
       </div>
-      <div className="w-full py-10 grid grid-cols-12 gap-4">
+      <GridWrapper>
         <div className="col-span-12 md:col-span-4">
           <ExploreRoomBanner
             imgUrl={`${
@@ -23,7 +24,7 @@ const RoomDesign: React.FC<IRoomDesignProps> = ({ data }) => {
           ></ExploreRoomBanner>
         </div>
         <div className="col-span-12 md:col-span-8">b</div>
-      </div>
+      </GridWrapper>
     </>
   );
 };
