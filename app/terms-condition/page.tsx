@@ -1,4 +1,5 @@
-import { SectionTitle } from "@/components/ui/section-title";
+import { SectionTitle } from "@/components/Shared/SectionTitle";
+
 
 export default function TermsConditionPage() {
   return (

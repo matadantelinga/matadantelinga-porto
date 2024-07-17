@@ -4,8 +4,8 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import Image from "next/image";
 import { ILocation } from "@/lib/interfaces/ilocation";
-import { SectionTitle } from "@/components/ui/section-title";
 import { LocationCard } from "./LocationCard";
+import { SectionTitle } from "@/components/Shared/SectionTitle";
 
 export const LocationList: React.FC = () => {
   const query = useQuery({
