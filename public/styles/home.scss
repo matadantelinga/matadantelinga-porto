@@ -3,6 +3,41 @@
   overflow: hidden;
   img {
     object-fit: contain;
-    width: 100%;
+    max-width: 100%;
+    margin: auto;
+  }
+}
+
+.design-accordion {
+  &__item {
+    display: flex;
+    align-items: start;
+    flex-wrap: wrap;
+    gap: 1rem;
+    .numbering {
+      flex: 0 0 10%;
+      max-width: 10%;
+      font-size: 2rem;
+      font-weight: bold;
+      background-color: #fada2537;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 100%;
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  &__item-content {
+    flex: 1;
+    button {
+      &:focus {
+        box-shadow: none;
+      }
+    }
+  }
+  button {
+    border: none;
   }
 }

@@ -1,9 +1,9 @@
 "use client";
-import { SectionTitle } from "@/components/ui/section-title";
+import { GridWrapper } from "@/components/Shared/GridWrapper";
 import { IWhyUs } from "@/lib/interfaces/ihomepage";
 import React from "react";
 import { WhyChooseCard } from "./WhyChooseCard";
-import { GridWrapper } from "@/components/Shared/GridWrapper";
+import { SectionTitle } from "@/components/Shared/SectionTitle";
 
 interface IWhyChooseProps {
   data: IWhyUs;

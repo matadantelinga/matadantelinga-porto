@@ -1,9 +1,9 @@
 "use client";
-import { SectionTitle } from "@/components/ui/section-title";
+import { GridWrapper } from "@/components/Shared/GridWrapper";
 import { IDesignRoom } from "@/lib/interfaces/ihomepage";
 import React from "react";
 import { ExploreRoomBanner } from "./ExploreRoomBanner";
-import { GridWrapper } from "@/components/Shared/GridWrapper";
+import { SectionTitle } from "@/components/Shared/SectionTitle";
 
 interface IRoomDesignProps {
   data: IDesignRoom;

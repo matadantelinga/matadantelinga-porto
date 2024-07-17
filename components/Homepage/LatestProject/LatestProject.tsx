@@ -1,5 +1,5 @@
 import { GridWrapper } from "@/components/Shared/GridWrapper";
-import { SectionTitle } from "@/components/ui/section-title";
+import { SectionTitle } from "@/components/Shared/SectionTitle";
 
 const LatestProject = () => {
   return (
@@ -8,9 +8,7 @@ const LatestProject = () => {
         <SectionTitle className="text-center">Proyek Terbaru Kami</SectionTitle>
       </div>
       <GridWrapper>
-        <div className="col-span-3 md:col-span-2">
-          a
-        </div>
+        <div className="col-span-3 md:col-span-2"></div>
       </GridWrapper>
     </>
   );

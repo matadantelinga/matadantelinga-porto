@@ -1,8 +1,8 @@
 import React from "react";
-import { SectionTitle } from "@/components/ui/section-title";
 import DreamStepper from "./DreamAccordion";
 import { IDreamDesign, ItemSliderDream } from "@/lib/interfaces/ihomepage";
 import { GridWrapper } from "@/components/Shared/GridWrapper";
+import { SectionTitle } from "@/components/Shared/SectionTitle";
 
 interface IDreamDesignProps {
   data: IDreamDesign;
@@ -19,7 +19,7 @@ const DreamDesign: React.FC<IDreamDesignProps> = ({
         <SectionTitle color="white">{data.main_title}</SectionTitle>
       </div>
       <GridWrapper>
-        <div className="col-span-12 md:col-span-6">
+        <div className="col-span-12 md:col-span-7">
           <div className="explore-banner banner-container">
             <img
               src={`${
@@ -30,7 +30,7 @@ const DreamDesign: React.FC<IDreamDesignProps> = ({
             />
           </div>
         </div>
-        <div className="col-span-12 md:col-span-6">
+        <div className="col-span-12 md:col-span-5">
           <DreamStepper accordionItems={itemSliderDream[0]?.item} />
         </div>
       </GridWrapper>

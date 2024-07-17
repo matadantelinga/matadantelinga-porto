@@ -16,18 +16,23 @@ interface IDreamStepperProps {
 const DreamStepper: React.FC<IDreamStepperProps> = ({ accordionItems }) => {
   return (
     <>
-      <div className="design-stepper text-white">
+      <div className="design-accordion text-white">
         <Accordion type="single" collapsible>
-          {accordionItems?.map((item) => (
+          {accordionItems?.map((item, index) => (
             <React.Fragment key={item.id}>
-              <AccordionItem value={`item${item.id}`}>
-                <AccordionTrigger>{item.title}</AccordionTrigger>
-                <AccordionContent>
-                  <div
-                    dangerouslySetInnerHTML={{ __html: item.description }}
-                  ></div>
-                </AccordionContent>
-              </AccordionItem>
+              <div className="design-accordion__item py-2">
+                <div className="numbering">{index + 1}</div>
+                <div className="design-accordion__item-content">
+                  <AccordionItem value={`item${item.id}`}>
+                    <AccordionTrigger>{item.title}</AccordionTrigger>
+                    <AccordionContent>
+                      <div
+                        dangerouslySetInnerHTML={{ __html: item.description }}
+                      ></div>
+                    </AccordionContent>
+                  </AccordionItem>
+                </div>
+              </div>
             </React.Fragment>
           ))}
         </Accordion>
