@@ -18,7 +18,7 @@ const WhyChoose: React.FC<IWhyChooseProps> = ({ data }) => {
       <GridWrapper>
         {data.item_why?.map((item) => (
           <React.Fragment key={item.id}>
-            <div className="col-span-12 md:col-span-4">
+            <div className="col-span-12 md:col-span-3">
               <WhyChooseCard data={item}></WhyChooseCard>
             </div>
           </React.Fragment>
