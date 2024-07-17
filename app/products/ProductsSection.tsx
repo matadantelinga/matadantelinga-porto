@@ -22,8 +22,6 @@ function ListPost() {
     );
   }
 
-
-
   const dataContents = query.data?.data;
 
   return (

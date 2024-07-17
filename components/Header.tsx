@@ -4,10 +4,10 @@ import Link from "next/link";
 import Image from "next/image";
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { useRouter } from 'next/navigation'
+import { useRouter } from "next/navigation";
 
 export default function Header() {
-  const router = useRouter()
+  const router = useRouter();
 
   return (
     <div className="sticky top-0 bg-white z-20 ">
@@ -18,7 +18,7 @@ export default function Header() {
           </Link>
           <ul className="flex items-center font-medium text-sm gap-10">
             <li>
-              <Link href="/">Portofolio</Link>
+              <Link href="/portofolio">Portofolio</Link>
             </li>
             <li>
               <Link href="/location">Area Jangkauan</Link>
@@ -29,10 +29,15 @@ export default function Header() {
           </ul>
         </div>
         <div className="relative gap-3 flex">
-          <Button variant="outline" onClick={() => router.push(`/auth/login`)} > Login</Button>
-          <Button onClick={() => router.push(`/auth/register`)}>Create Account</Button>
+          <Button variant="outline" onClick={() => router.push(`/auth/login`)}>
+            {" "}
+            Login
+          </Button>
+          <Button onClick={() => router.push(`/auth/register`)}>
+            Create Account
+          </Button>
         </div>
       </div>
-    </div >
+    </div>
   );
 }

@@ -10,7 +10,7 @@ interface GridWrapperProps {
 export const GridWrapper: React.FC<GridWrapperProps> = ({
   children,
   className,
-  padding = "py-10",
+  padding = "py-10", // Default padding, pass another value if want to customize
 }) => {
   return (
     <div

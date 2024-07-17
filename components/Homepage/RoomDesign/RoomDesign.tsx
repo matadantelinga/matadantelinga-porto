@@ -22,6 +22,9 @@ const RoomDesign: React.FC<IRoomDesignProps> = ({ data }) => {
             imgUrl={`${
               process.env.URL_MEDIA + data?.image?.data.attributes.url
             }`}
+            bannerText={data.main_title}
+            linkUrl={data.link}
+            linkLabel={data.link_label}
           ></ExploreRoomBanner>
         </div>
         <div className="col-span-12 md:col-span-8">
