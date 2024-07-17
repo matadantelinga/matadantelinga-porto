@@ -1,9 +1,10 @@
 "use client";
 import { GridWrapper } from "@/components/Shared/GridWrapper";
+import { SectionTitle } from "@/components/Shared/SectionTitle";
 import { IDesignRoom } from "@/lib/interfaces/ihomepage";
 import React from "react";
 import { ExploreRoomBanner } from "./ExploreRoomBanner";
-import { SectionTitle } from "@/components/Shared/SectionTitle";
+import { ExploreRoomCategories } from "./ExploreRoomCategories";
 
 interface IRoomDesignProps {
   data: IDesignRoom;
@@ -23,7 +24,9 @@ const RoomDesign: React.FC<IRoomDesignProps> = ({ data }) => {
             }`}
           ></ExploreRoomBanner>
         </div>
-        <div className="col-span-12 md:col-span-8">b</div>
+        <div className="col-span-12 md:col-span-8">
+          <ExploreRoomCategories></ExploreRoomCategories>
+        </div>
       </GridWrapper>
     </>
   );

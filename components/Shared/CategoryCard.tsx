@@ -1,9 +1,8 @@
-// Assuming the IProduct interface is defined in "@/lib/interfaces/iproduct"
-import { IProduct } from "@/lib/interfaces/iproduct";
+import { IRoomCategoryAttributes } from "@/lib/interfaces/icategory";
 import React from "react";
 
 interface ICardProps {
-  data: IProduct;
+  data: IRoomCategoryAttributes;
 }
 
 export const CategoryCard: React.FC<ICardProps> = ({ data }) => {
@@ -11,16 +10,13 @@ export const CategoryCard: React.FC<ICardProps> = ({ data }) => {
     <article className="post-card">
       <div className="post-image">
         <img
-          src={data.attributes.image.data[0].attributes.url}
-          alt={
-            data.attributes.image.data[0].attributes.alternativeText ||
-            data.attributes.title
-          }
+          src={`${process.env.URL_MEDIA + data?.image?.data?.attributes?.url}`}
+          alt={data.slug}
         />
       </div>
       <div className="post-detail">
-        <div className="title">{data.attributes.title}</div>
-        <div className="total">Price: {data.attributes.price_total}</div>
+        <div className="title">{data?.title}</div>
+        <div className="total">{data.products.data.length ?? 0} proyek</div>
       </div>
     </article>
   );

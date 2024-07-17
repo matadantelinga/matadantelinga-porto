@@ -4,15 +4,21 @@ import classNames from "classnames";
 interface GridWrapperProps {
   children: ReactNode;
   className?: string;
+  padding?: string;
 }
 
 export const GridWrapper: React.FC<GridWrapperProps> = ({
   children,
   className,
+  padding = "py-10",
 }) => {
   return (
     <div
-      className={classNames("w-full py-10 grid grid-cols-12 gap-4", className)}
+      className={classNames(
+        "w-full grid grid-cols-12 gap-4",
+        padding,
+        className
+      )}
     >
       {children}
     </div>
