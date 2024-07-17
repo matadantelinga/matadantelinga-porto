@@ -32,7 +32,6 @@ export default function Ask() {
     console.log(values);
   }
 
-  console.log(form.formState.errors);
   return (
     <div
       className="relative 
