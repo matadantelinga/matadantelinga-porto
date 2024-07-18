@@ -20,12 +20,13 @@
   &__banner,
   &__form {
     padding: 2rem 1.5rem;
+    flex: 0 0 50%;
+    max-width: 50%;
   }
   &__banner {
     text-align: center;
     position: relative;
-    flex: 0 0 60%;
-    max-width: 60%;
+   
     &::before {
       width: 100%;
       height: 25%;
@@ -42,12 +43,9 @@
       z-index: 3;
       img {
         max-width: 100%;
+        margin: auto;
       }
     }
-  }
-  &__form {
-    flex: 0 0 40%;
-    max-width: 40%;
   }
 
   @media (max-width: 767px) {
