@@ -26,7 +26,7 @@
   &__banner {
     text-align: center;
     position: relative;
-   
+
     &::before {
       width: 100%;
       height: 25%;
@@ -53,6 +53,33 @@
     &__form {
       flex: 100%;
       max-width: 100%;
+    }
+  }
+}
+
+.icon-menu-list {
+  margin-top: 1rem;
+  li {
+    cursor: pointer;
+    min-width: 150px;
+    &.active,
+    &:hover {
+      img {
+        filter: invert(27%) sepia(39%) saturate(7076%) hue-rotate(347deg)
+          brightness(114%) contrast(97%);
+      }
+      label {
+        color: #fb3131;
+      }
+      &::after {
+        content: "";
+        min-width: 100px;
+        width: fit-content;
+        height: 2px;
+        background-color: #fb3131;
+        display: block;
+        margin: 0.5rem auto 0
+      }
     }
   }
 }
