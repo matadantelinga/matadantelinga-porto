@@ -59,6 +59,37 @@
       }
     }
   }
+
+  &.product {
+    max-height: fit-content;
+    .post-image {
+      max-height: 280px;
+      overflow: hidden;
+      border-radius: 13px;
+    }
+    .post-detail {
+      position: relative;
+      height: fit-content;
+      top: unset;
+      left: unset;
+      padding: 1em 0;
+      .title {
+        color: #3a3541;
+        font-size: 1rem;
+      }
+      .price,
+      .category {
+        color: #3a3541;
+        font-size: 0.75rem;
+      }
+      .price {
+        font-weight: bold;
+      }
+      &::before {
+        display: none;
+      }
+    }
+  }
 }
 
 .location-card {
