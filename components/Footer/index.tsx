@@ -1,3 +1,4 @@
+"use client"
 import moment from "moment";
 import Image from "next/image";
 import Link from "next/link";
@@ -5,11 +6,16 @@ import { FaFacebookF, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import Ask from "./Ask";
 import { AskPrice } from "../AskPrice/AskPrice";
+import { useSelectedLayoutSegment } from 'next/navigation'
 
 export default function Footer() {
+  const pathName = useSelectedLayoutSegment()
+
   return (
     <>
-      <AskPrice></AskPrice>
+      {
+        pathName !== "auth" && pathName !== "user" ? <AskPrice /> : null
+      }
       <div className="relative">
         <div className="bg-c-gray w-full min-h-150px px-5 pb-8 py-14">
           <div className="wrapper flex justify-between gap-5 [&_h4]:font-semibold  [&_h4]:mb-5">
