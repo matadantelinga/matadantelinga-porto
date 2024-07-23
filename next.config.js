@@ -5,6 +5,9 @@ const nextConfig = {
     URL_API: process.env.URL_API,
     URL_MEDIA: process.env.URL_MEDIA,
     KEY_API: process.env.KEY_API,
+    NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
+    NEXTAUTH_URL: process.env.NEXTAUTH_URL
+
   },
   reactStrictMode: true,
   images: {
