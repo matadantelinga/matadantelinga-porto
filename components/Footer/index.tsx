@@ -1,21 +1,44 @@
-"use client"
+"use client";
+import { getGeneralInfo } from "@/lib/services/generalServices";
+import { useQuery } from "@tanstack/react-query";
 import moment from "moment";
 import Image from "next/image";
 import Link from "next/link";
-import { FaFacebookF, FaYoutube } from "react-icons/fa";
-import { FaXTwitter } from "react-icons/fa6";
-import Ask from "./Ask";
+import { useSelectedLayoutSegment } from "next/navigation";
+import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { AskPrice } from "../AskPrice/AskPrice";
-import { useSelectedLayoutSegment } from 'next/navigation'
+import { iGeneralInfo } from "@/lib/interfaces/igeneral";
 
 export default function Footer() {
-  const pathName = useSelectedLayoutSegment()
+  const pathName = useSelectedLayoutSegment();
+
+  const query = useQuery({
+    queryKey: ["qGeneralInfo"],
+    queryFn: getGeneralInfo,
+  });
+
+  if (query.isLoading) {
+    return (
+      <div className="relative flex justify-center ">
+        <div className="animate-pulse w-full">
+          <div className="rounded-sm bg-slate-200 h-[calc(100vh-89px)] w-full flex justify-center items-center ">
+            <Image
+              src="/images/loading.svg"
+              width={100}
+              height={100}
+              alt="loading"
+            />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  const dataContent: iGeneralInfo = query?.data?.data.data.attributes;
 
   return (
     <>
-      {
-        pathName !== "author" && pathName !== "user" ? <AskPrice /> : null
-      }
+      {pathName !== "author" && pathName !== "user" ? <AskPrice /> : null}
       <div className="relative">
         <div className="bg-c-gray w-full min-h-150px px-5 pb-8 py-14">
           <div className="wrapper flex justify-between gap-5 [&_h4]:font-semibold  [&_h4]:mb-5">
@@ -31,41 +54,36 @@ export default function Footer() {
               <div className="flex flex-col gap-3">
                 <p>Senin - Jumat</p>
                 <p>09.00-18.00</p>
-                <p>(021) 1234567890</p>
+                <p>{dataContent.whatsapp}</p>
               </div>
               <div
                 className="flex gap-2 mt-5 
                             [&_a]:bg-c-black2 [&_a]:rounded-full [&_a]:flex [&_a]:justify-center [&_a]:items-center [&_a]:text-white [&_a]:p-2
                             "
               >
-                <Link href="/">
-                  <FaFacebookF />
+                <Link href={dataContent.instagram} target="_blank">
+                  <FaInstagram />
                 </Link>
-                <Link href="/">
-                  <FaXTwitter />
-                </Link>
-                <Link href="/">
-                  <FaYoutube />
+                <Link
+                  href={`https://api.whatsapp.com/send?phone=${dataContent.whatsapp}&text=Halo%20Planet%20Dekor%2C%20saya%20ingin%20menanyakan%20beberapa%20hal%20terkait%20projek%20desain.`}
+                  target="_blank"
+                >
+                  <FaWhatsapp />
                 </Link>
               </div>
             </div>
             <div>
-              <h4>Portofolio</h4>
+              <h4>Links</h4>
               <ul className="[&_a]:block [&_a]:py-1">
                 <li>
-                  <Link href="/">Link</Link>
+                  <Link href={dataContent.tokopedia} target="_blank">
+                    Tokopedia
+                  </Link>
                 </li>
                 <li>
-                  <Link href="/">Link</Link>
-                </li>
-                <li>
-                  <Link href="/">Link</Link>
-                </li>
-                <li>
-                  <Link href="/">Link</Link>
-                </li>
-                <li>
-                  <Link href="/">Link</Link>
+                  <Link href={dataContent.shopee} target="_blank">
+                    Shopee
+                  </Link>
                 </li>
               </ul>
             </div>

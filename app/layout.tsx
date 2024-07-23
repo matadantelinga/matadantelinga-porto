@@ -1,8 +1,9 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import SessionWrapper from "@/components/SessionWrapper";
+import Basecontent from "@/components/basecontent";
 import { Inter } from "next/font/google";
 import "./globals.scss";
-import SessionWrapper from "@/components/SessionWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +23,9 @@ export default function RootLayout({
         <body className={inter.className} suppressHydrationWarning={true}>
           <Header />
           {children}
-          <Footer />
+          <Basecontent>
+            <Footer />
+          </Basecontent>
         </body>
       </SessionWrapper>
     </html>

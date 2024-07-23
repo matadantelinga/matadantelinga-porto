@@ -19,4 +19,7 @@ export interface IRoomCategory {
 
 export interface IProductQueryParams {
   size: number;
+  room?: string;
+  type?: string;
+  style?: string;
 }

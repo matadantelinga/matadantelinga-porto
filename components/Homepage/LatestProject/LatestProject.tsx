@@ -14,6 +14,9 @@ import { ProjectTabWrapper } from "./ProjectTabWrapper";
 const LatestProject = () => {
   const [queryParams, setQueryParams] = useState<IProductQueryParams>({
     size: 12,
+    room: "",
+    type: "",
+    style: "",
   });
 
   const query = useQuery({
