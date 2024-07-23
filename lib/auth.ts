@@ -1,5 +1,4 @@
-import axios from "axios";
-import type { NextAuthOptions } from "next-auth";
+import type { NextAuthOptions } from "next-auth"
 import Credentials from "next-auth/providers/credentials"
 import GithubProvider from "next-auth/providers/github"
 
@@ -11,20 +10,15 @@ interface iUser {
     user?: any
 }
 
-interface iUserResponse {
-    token: string;
-}
-
 
 export const authOptions: NextAuthOptions = {
     session: {
         strategy: "jwt",
     },
-
     providers: [
         Credentials({
             credentials: {
-                identifier: {
+                email: {
                     label: "Email",
                     type: "email",
                     placeholder: "example@example.com",
@@ -36,64 +30,35 @@ export const authOptions: NextAuthOptions = {
             },
             async authorize(credentials) {
                 const res = await fetch(
-                    // `${process.env.URL_API}/auth/local/`,
-                    `https://api-staging.celeparty.id/api/v1/login`,
+                    `${process.env.URL_API}/auth/local/`,
                     {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
+                            "Authorization": `Bearer ${process.env.KEY_API_POST}`,
                         },
                         body: JSON.stringify(credentials),
                     }
                 );
+
+
                 const user: iUser = await res.json();
                 if (res.ok) {
                     return user;
                 }
-                return null
+                return user;
             }
         }
+
         ),
         GithubProvider({
             clientId: process.env.GITHUB_ID as string,
             clientSecret: process.env.GITHUB_SECRET as string,
-        }),
+        })
 
     ],
-
-    secret: process.env.NEXTAUTH_SECRET,
-
     pages: {
-        signIn: "/auth/login",
+        signIn: "/author/login",
         error: "*",
     },
-
-    callbacks: {
-        async jwt({ token, user }: any) {
-            if (user) {
-                console.log({ user })
-                token.accessToken = user.token;
-                token.user = user.data.user;
-                token.message = user.message;
-            }
-            return token;
-        },
-        async session({ session, token, user }) {
-            session.user = token
-            return {
-                ...session,
-                user: {
-                    ...session.user,
-                    accessToken: token.accessToken,
-                    message: token.message,
-                    user: token.user,
-                },
-                token: token.accessToken,
-            };
-        },
-
-
-    },
-
-
 }

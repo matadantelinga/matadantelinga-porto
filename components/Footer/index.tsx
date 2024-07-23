@@ -14,7 +14,7 @@ export default function Footer() {
   return (
     <>
       {
-        pathName !== "auth" && pathName !== "user" ? <AskPrice /> : null
+        pathName !== "author" && pathName !== "user" ? <AskPrice /> : null
       }
       <div className="relative">
         <div className="bg-c-gray w-full min-h-150px px-5 pb-8 py-14">

@@ -5,10 +5,12 @@ import Image from "next/image";
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import { useSession, signOut } from "next-auth/react";
 
 export default function Header() {
+  const { data: session, status } = useSession();
   const router = useRouter();
-
+  console.log(session)
   return (
     <div className="sticky top-0 bg-white z-20 ">
       <div className="wrapper flex items-center justify-between py-3">
@@ -29,13 +31,18 @@ export default function Header() {
           </ul>
         </div>
         <div className="relative gap-3 flex">
-          <Button variant="outline" onClick={() => router.push(`/auth/login`)}>
-            {" "}
-            Login
-          </Button>
-          <Button onClick={() => router.push(`/auth/register`)}>
-            Create Account
-          </Button>
+          {
+            session ? <Button variant="outline" onClick={() => signOut()}>Logout</Button> : <>
+              <Button variant="outline" onClick={() => router.push(`/author/login`)}>
+                {" "}
+                Login
+              </Button>
+              <Button onClick={() => router.push(`/author/register`)}>
+                Create Account
+              </Button>
+            </>
+          }
+
         </div>
       </div>
     </div>

@@ -18,8 +18,8 @@ import {
 } from "@/components/ui/form";
 import { useRouter } from "next/navigation";
 import { useSession, signIn, signOut } from "next-auth/react";
+
 import { useEffect, useState } from "react";
-import SessionWrapper from "@/components/SessionWrapper";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 
 const signInSchema = z.object({
@@ -45,26 +45,27 @@ export default function LoginPage() {
         },
     });
 
-    const Login = async (values: z.infer<typeof signInSchema>) => {
+    const Login = async (values: z.infer<typeof signInSchema>, e: any) => {
         const { email, password } = values;
-        // const result = await signIn("credentials", {
-        //     email: email,
-        //     password: password,
-        //     callbackUrl: "/",
-        // });
-
-        // if (result?.error) {
-        //     console.error('Login failed:', result.error);
-        // } else {
-        //     router.push("/");
-        // }
+        const result = await signIn("credentials", {
+            email: email,
+            password: password,
+            callbackUrl: "/user/home",
+        });
+        console.log(result)
+        if (result?.error) {
+            e.preventDefault();
+            console.error('Login failed:', result.error);
+        } else {
+            router.push("/user/home");
+        }
     };
     useEffect(() => {
-        // if (status === "authenticated") {
-        //     router.push("/")
-        // } else {
-        //     router.push("/auth/login")
-        // }
+        if (status === "authenticated") {
+            router.push("/")
+        } else {
+            router.push("/author/login")
+        }
     });
     return (
         <div className="relative wrapper py-7 bg-c-blue my-5 ">
