@@ -117,7 +117,7 @@ export default function LoginPage() {
               <div className="flex justify-end mt-2">
                 <Link
                   href={"/"}
-                  className="font-hind font-semibold text-[12px] text-c-orange"
+                  className="font-hind font-semibold text-[12px] text-c-orange underline"
                 >
                   Lupa Kata Sandi?
                 </Link>
@@ -126,9 +126,9 @@ export default function LoginPage() {
               <div className="mt-7 flex justify-center">
                 <div className="flex flex-col gap-2 justify-center">
                   <Button type="submit">Login</Button>
-                  <p className="font-hind font-semibold text-white text-[12px]">
+                  <p className="font-hind font-semibold text-c-black text-[12px]">
                     Belum punya akun?{" "}
-                    <Link href={"/register"} className="text-c-orange">
+                    <Link href={"/auth/register"} className="text-c-orange underline">
                       Registrasi
                     </Link>
                   </p>
