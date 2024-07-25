@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 
+
 export default function Header() {
   const { data: session, status } = useSession();
   const router = useRouter();

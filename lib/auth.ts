@@ -2,13 +2,13 @@ import type { NextAuthOptions } from "next-auth"
 import Credentials from "next-auth/providers/credentials"
 import GithubProvider from "next-auth/providers/github"
 
-interface iUser {
-    id: string
-    token: string
-    data: any
-    message: string
-    user?: any
-}
+// interface iUser {
+//     id: string
+//     token: string
+//     data: any
+//     message: string
+//     user?: any
+// }
 
 
 export const authOptions: NextAuthOptions = {
@@ -18,7 +18,7 @@ export const authOptions: NextAuthOptions = {
     providers: [
         Credentials({
             credentials: {
-                email: {
+                identifier: {
                     label: "Email",
                     type: "email",
                     placeholder: "example@example.com",
@@ -42,7 +42,7 @@ export const authOptions: NextAuthOptions = {
                 );
 
 
-                const user: iUser = await res.json();
+                const user: any = await res.json();
                 if (res.ok) {
                     return user;
                 }
@@ -57,6 +57,21 @@ export const authOptions: NextAuthOptions = {
         })
 
     ],
+
+    callbacks: {
+        async jwt({ token, user }: any) {
+            if (user) {
+                token.accessToken = user?.jwt;
+                token.user = user?.user;
+            }
+            return token;
+        },
+        async session({ session, token }: any) {
+            session.jwt = token?.accessToken;
+            session.user = token?.user;
+            return session;
+        },
+    },
     pages: {
         signIn: "/author/login",
         error: "*",
