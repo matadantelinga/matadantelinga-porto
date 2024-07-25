@@ -5,7 +5,7 @@ import parse from 'html-react-parser';
 import { useQuery } from "@tanstack/react-query";
 import { getProjectsByUser } from "@/lib/services/userService";
 import Image from "next/image";
-import { ItemData } from "../me/page";
+import { ItemData } from "@/components/Shared/UserItemData";
 
 
 export default function UserHome() {
