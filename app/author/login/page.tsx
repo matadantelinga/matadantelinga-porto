@@ -48,7 +48,7 @@ export default function LoginPage() {
     const Login = async (values: z.infer<typeof signInSchema>, e: any) => {
         const { email, password } = values;
         const result = await signIn("credentials", {
-            email: email,
+            identifier: email,
             password: password,
             callbackUrl: "/user/home",
         });
