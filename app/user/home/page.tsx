@@ -14,7 +14,7 @@ export default function UserHome() {
     const query = useQuery({
         queryKey: ["qGetProjectsByUser"],
         enabled: session?.user !== undefined,
-        queryFn: () => getProjectsByUser(`${session?.user?.id}`)
+        queryFn: () => getProjectsByUser(`${(session?.user as { id: string })?.id}`)
     });
 
 
