@@ -52,8 +52,11 @@ export default function Footer() {
                 />
               </Link>
               <div className="flex flex-col gap-3">
-                <p>Senin - Jumat</p>
-                <p>09.00-18.00</p>
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: dataContent.information,
+                  }}
+                ></div>
                 <p>{dataContent.whatsapp}</p>
               </div>
               <div
