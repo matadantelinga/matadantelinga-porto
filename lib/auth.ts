@@ -51,22 +51,18 @@ export const authOptions: NextAuthOptions = {
         }
 
         ),
-        GithubProvider({
-            clientId: process.env.GITHUB_ID as string,
-            clientSecret: process.env.GITHUB_SECRET as string,
-        })
 
     ],
 
     callbacks: {
-        async jwt({ token, user }: any) {
+        async jwt({ token, user }: { token: any, user: any }) {
             if (user) {
                 token.accessToken = user?.jwt;
                 token.user = user?.user;
             }
             return token;
         },
-        async session({ session, token }: any) {
+        async session({ session, token }: { session: any, token: any }) {
             session.jwt = token?.accessToken;
             session.user = token?.user;
             return session;

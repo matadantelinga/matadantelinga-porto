@@ -9,9 +9,12 @@ import { useSession, signOut } from "next-auth/react";
 
 
 export default function Header() {
-  const { data: session, status } = useSession();
+  const { data: session, status } = useSession({
+    required: false,
+  });
+
+
   const router = useRouter();
-  console.log(session)
   return (
     <div className="sticky top-0 bg-white z-20 ">
       <div className="wrapper flex items-center justify-between py-3">
@@ -32,16 +35,18 @@ export default function Header() {
           </ul>
         </div>
         <div className="relative gap-3 flex">
+
           {
-            session ? <Button variant="outline" onClick={() => signOut()}>Logout</Button> : <>
-              <Button variant="outline" onClick={() => router.push(`/author/login`)}>
-                {" "}
-                Login
-              </Button>
-              <Button onClick={() => router.push(`/author/register`)}>
-                Create Account
-              </Button>
-            </>
+            status !== "loading" ?
+              session ? <Button variant="outline" onClick={() => signOut()}>Logout</Button> : <>
+                <Button variant="outline" onClick={() => router.push(`/author/login`)}>
+                  {" "}
+                  Login
+                </Button>
+                <Button onClick={() => router.push(`/author/register`)}>
+                  Create Account
+                </Button>
+              </> : null
           }
 
         </div>
