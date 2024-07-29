@@ -198,7 +198,7 @@ export default function Register() {
           </Form>
           {message ? (
             <div className="mt-1 text-green-500">
-              Terima kasih, user anda akan aktif setelah verifikasi dari admin.
+              Terima kasih, Silahkan cek email anda untuk konfirmasi
             </div>
           ) : null}
           {errorMessage ? (
