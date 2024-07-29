@@ -3,9 +3,13 @@ import { NextResponse } from "next/server";
 // import { cookies } from "next/headers"
 
 export function middleware(request: NextRequest) {
-  const cookie = request.cookies.get("next-auth.session-token")
-    ? request.cookies.get("next-auth.session-token")
-    : false;
+  const cookies = request.cookies.getAll();
+  const nextAuthCookie = cookies.find(cookie => cookie.name === "next-auth.session-token");
+  const secureNextAuthCookie = cookies.find(cookie => cookie.name === "__Secure-next-auth.session-token");
+
+  const cookie = nextAuthCookie || secureNextAuthCookie || false;
+
+
 
   if (cookie && request.nextUrl.pathname.startsWith("/user")) {
     return NextResponse.next();
