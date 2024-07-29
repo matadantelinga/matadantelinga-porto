@@ -1,11 +1,12 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
-import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense } from "react"
+import { useSearchParams } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -41,12 +42,12 @@ const forgotSchema = z.object({
     }
 });
 
-export default function ChangePassword() {
+function ChangePassword() {
+    const searchParams = useSearchParams()
     const [message, setMessage] = useState(false);
     const [show, setShow] = useState(false);
     const [show2, setShow2] = useState(false);
-    const param = useSearchParams()
-    const code = param.get('code')
+
     const [errorMessage, setErrorMessage] = useState<string | boolean | null>(
         false
     );
@@ -57,12 +58,14 @@ export default function ChangePassword() {
             confirm: "",
         },
     });
-    console.log(code)
+
+    const myCode = searchParams && searchParams.get('code')
+    console.log(myCode && myCode)
     const sendForgot = async (values: z.infer<typeof forgotSchema>) => {
         const sendNow = async () => {
             try {
                 const data = {
-                    code: code,
+                    code: myCode,
                     email: values.password,
                     confirm: values.confirm,
                 };
@@ -70,8 +73,12 @@ export default function ChangePassword() {
                     `${process.env.URL_API}/auth/reset-password/`,
                     data
                 );
+                console.log(response.data)
                 setErrorMessage(false);
                 setMessage(true);
+                setTimeout(() => {
+                    window.location.href = "/author/login";
+                }, 3500);
             } catch (error: any) {
                 console.error("Error:", error?.response.data.error.message);
                 setErrorMessage(error?.response.data.error.message);
@@ -155,7 +162,7 @@ export default function ChangePassword() {
                     </Form>
                     {message ? (
                         <div className="mt-2 text-green-500">
-                            Password Diubah, silahkan <Link href="/author/login">login</Link>
+                            Password Diubah, silahkan <Link href="/author/login" className="text-blue-500 underline">login</Link>
                         </div>
                     ) : null}
                     {errorMessage ? (
@@ -165,4 +172,13 @@ export default function ChangePassword() {
             </div>
         </div>
     );
+}
+
+
+export default function ChangePasswordPage() {
+    return (
+        <Suspense fallback={<div>Loading...</div>}>
+            <ChangePassword />
+        </Suspense>
+    )
 }
