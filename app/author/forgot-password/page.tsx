@@ -27,7 +27,7 @@ const forgotSchema = z.object({
         .max(254, { message: "Maksimal karakter untuk email yaitu 254 huruf" }),
 });
 
-export default function Register() {
+export default function FOrgotPassword() {
     const [message, setMessage] = useState(false);
     const [errorMessage, setErrorMessage] = useState<string | boolean | null>(
         false
