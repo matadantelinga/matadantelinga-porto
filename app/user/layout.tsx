@@ -20,8 +20,8 @@ export default function RootLayout({ children, }: { children: React.ReactNode; }
                     <div className="bg-c-yellow rounded-xl min-w-[200px] p-5 
                 [&_a]:block [&_a]:w-full  [&_a]:text-c-black2 [&_a]:py-1">
                         <ul className="flex flex-col gap-2">
-                            <li><Link href="/user/home">Home</Link></li>
-                            <li><Link href="/user/me">Projects</Link></li>
+                            <li><Link href="/user/home">Projects</Link></li>
+                            <li><Link href="/user/me">Profile</Link></li>
                         </ul>
                     </div>
                 </div>
