@@ -8,12 +8,10 @@ import { useRouter } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 import { VscAccount } from "react-icons/vsc";
 
-
 export default function Header() {
   const { data: session, status } = useSession({
     required: false,
   });
-
 
   const router = useRouter();
   return (
@@ -36,7 +34,6 @@ export default function Header() {
           </ul>
         </div>
         <div className="relative gap-3 flex">
-
           {
             status !== "loading" ?
               session ?
@@ -57,7 +54,6 @@ export default function Header() {
                   </Button>
                 </> : null
           }
-
         </div>
       </div>
     </div>
