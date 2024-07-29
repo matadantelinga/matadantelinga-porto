@@ -1,4 +1,6 @@
+"use client";
 import { IProduct } from "@/lib/interfaces/iproduct";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 interface ICardProps {
@@ -6,6 +8,11 @@ interface ICardProps {
 }
 
 export const ProductCard: React.FC<ICardProps> = ({ data }) => {
+  const router = useRouter();
+  const seeDetail = () => {
+    router.push(`/portofolio/${data.attributes.slug}`);
+  };
+
   return (
     <article className="post-card product">
       <div className="post-image">
@@ -17,7 +24,9 @@ export const ProductCard: React.FC<ICardProps> = ({ data }) => {
         />
       </div>
       <div className="post-detail">
-        <div className="title">{data.attributes.title}</div>
+        <div className="title" onClick={seeDetail}>
+          {data.attributes.title}
+        </div>
         <div className="category">
           {data.attributes.room.data.attributes.title}
         </div>

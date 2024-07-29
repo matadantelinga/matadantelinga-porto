@@ -7,12 +7,10 @@ import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
 
-
 export default function Header() {
   const { data: session, status } = useSession({
     required: false,
   });
-
 
   const router = useRouter();
   return (
@@ -35,20 +33,26 @@ export default function Header() {
           </ul>
         </div>
         <div className="relative gap-3 flex">
-
-          {
-            status !== "loading" ?
-              session ? <Button variant="outline" onClick={() => signOut()}>Logout</Button> : <>
-                <Button variant="outline" onClick={() => router.push(`/author/login`)}>
+          {status !== "loading" ? (
+            session ? (
+              <Button variant="outline" onClick={() => signOut()}>
+                Logout
+              </Button>
+            ) : (
+              <>
+                <Button
+                  variant="outline"
+                  onClick={() => router.push(`/author/login`)}
+                >
                   {" "}
                   Login
                 </Button>
                 <Button onClick={() => router.push(`/author/register`)}>
                   Create Account
                 </Button>
-              </> : null
-          }
-
+              </>
+            )
+          ) : null}
         </div>
       </div>
     </div>
