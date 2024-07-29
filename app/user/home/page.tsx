@@ -48,16 +48,16 @@ export default function UserHome() {
     return (
         <div>
             {
-                dataContent?.map((item: any, i: number) => {
+                dataContent ? dataContent?.map((item: any, i: number) => {
                     return (
-                        <div key={i}>
-                            <ItemData label="Judul" value={item.attributes.title} />
-                            <ItemData label="Status" value={parse(`<div className="capitalize">${item.attributes.status}</div>`)} />
-                            <ItemData label="Harga" value={parseInt(item.attributes.price).toLocaleString("id-ID", { style: "currency", currency: "IDR" })} />
-                            <ItemData label="Description" value={parse(item.attributes.description)} />
+                        <div key={i} className={`w-full mb-7 `}>
+                            <div className="bg-c-yellow2"><ItemData bgcolor={false} label="Judul" value={item.attributes.title} /></div>
+                            <ItemData bgcolor={false} label="Status" value={parse(`<div className="capitalize">${item.attributes.status}</div>`)} />
+                            <ItemData bgcolor={true} label="Harga" value={parseInt(item.attributes.price).toLocaleString("id-ID", { style: "currency", currency: "IDR" })} />
+                            <ItemData bgcolor={false} label="Description" value={parse(item.attributes.description)} />
                         </div>
                     )
-                })
+                }) : <div>Data Not Found</div>
             }
         </div>
     )

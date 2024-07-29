@@ -50,9 +50,9 @@ export default function LoginPage() {
         const result = await signIn("credentials", {
             identifier: email,
             password: password,
-            callbackUrl: "/user/home",
+            // callbackUrl: "/user/home",
         });
-        console.log(result)
+
         if (result?.error) {
             e.preventDefault();
             console.error('Login failed:', result.error);
