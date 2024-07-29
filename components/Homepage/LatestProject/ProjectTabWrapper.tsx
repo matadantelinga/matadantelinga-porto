@@ -2,10 +2,17 @@ import {
   ILatestProjectMenu,
   StaticLatestProjectMenu,
 } from "@/lib/staticDataObjects/latestProject";
-import React from "react";
+import React, { useState } from "react";
 
-export const ProjectTabWrapper = () => {
-  const menus: ILatestProjectMenu[] = StaticLatestProjectMenu;
+interface TabWrapperProps {
+  onMenuClick: (selectedMenu: ILatestProjectMenu) => void;
+  menus: ILatestProjectMenu[];
+}
+
+export const ProjectTabWrapper: React.FC<TabWrapperProps> = ({
+  onMenuClick,
+  menus,
+}) => {
   return (
     <>
       <div className="col-span-12 md:col-span-6 md:col-start-4">
@@ -16,6 +23,7 @@ export const ProjectTabWrapper = () => {
                 className={`menu-item px-5 text-center ${
                   menu.isActive ? "active" : "inactive"
                 }`}
+                onClick={() => onMenuClick(menu)}
               >
                 <img src={menu.icon} className="m-auto" alt="" />
                 <label className="block">{menu.label}</label>

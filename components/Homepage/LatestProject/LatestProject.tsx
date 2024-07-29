@@ -8,10 +8,18 @@ import { IProduct } from "@/lib/interfaces/iproduct";
 import { getAllProducts } from "@/lib/services/productServices";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ProjectTabWrapper } from "./ProjectTabWrapper";
+import {
+  ILatestProjectMenu,
+  StaticLatestProjectMenu,
+} from "@/lib/staticDataObjects/latestProject";
 
 const LatestProject = () => {
+  const [menus, setMenus] = useState<ILatestProjectMenu[]>(
+    StaticLatestProjectMenu
+  );
+
   const [queryParams, setQueryParams] = useState<IProductQueryParams>({
     size: 12,
     room: "",
@@ -19,14 +27,34 @@ const LatestProject = () => {
     style: "",
   });
 
-  const query = useQuery({
-    queryKey: ["qHomeProducts"],
-    queryFn: () => {
-      return getAllProducts(queryParams);
-    },
+  const { data, isLoading, refetch } = useQuery({
+    queryKey: ["qHomeProducts", queryParams], // Add queryParams to the queryKey
+    queryFn: () => getAllProducts(queryParams), // Fetch products based on queryParams
   });
 
-  if (query.isLoading) {
+  useEffect(() => {
+    refetch();
+  }, [queryParams, refetch]);
+
+  const setActiveFilter = (type: string, value: string) => {
+    setQueryParams((prevParams) => ({
+      ...prevParams,
+      [type]: value,
+    }));
+  };
+
+  const handleMenuClick = (selectedMenu: ILatestProjectMenu) => {
+    setMenus((prevMenus) =>
+      prevMenus.map((menu) =>
+        menu.id === selectedMenu.id
+          ? { ...menu, isActive: true }
+          : { ...menu, isActive: false }
+      )
+    );
+    setActiveFilter(selectedMenu.type, selectedMenu.value);
+  };
+
+  if (isLoading) {
     return (
       <div className="relative flex justify-center ">
         <div className="animate-pulse w-full">
@@ -43,7 +71,7 @@ const LatestProject = () => {
     );
   }
 
-  const products: IProduct[] = query?.data?.data?.data;
+  const products: IProduct[] = data?.data.data;
 
   return (
     <>
@@ -51,7 +79,12 @@ const LatestProject = () => {
         <SectionTitle className="text-center">Proyek Terbaru Kami</SectionTitle>
       </div>
       <GridWrapper className="place-items-center">
-        <ProjectTabWrapper></ProjectTabWrapper>
+        <ProjectTabWrapper
+          onMenuClick={(menu: ILatestProjectMenu) => {
+            handleMenuClick(menu);
+          }}
+          menus={menus}
+        ></ProjectTabWrapper>
       </GridWrapper>
       <GridWrapper>
         {products?.map((prod) => (
