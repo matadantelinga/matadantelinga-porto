@@ -6,6 +6,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
+import { VscAccount } from "react-icons/vsc";
 
 export default function Header() {
   const { data: session, status } = useSession({
@@ -33,26 +34,26 @@ export default function Header() {
           </ul>
         </div>
         <div className="relative gap-3 flex">
-          {status !== "loading" ? (
-            session ? (
-              <Button variant="outline" onClick={() => signOut()}>
-                Logout
-              </Button>
-            ) : (
-              <>
-                <Button
-                  variant="outline"
-                  onClick={() => router.push(`/author/login`)}
-                >
-                  {" "}
-                  Login
-                </Button>
-                <Button onClick={() => router.push(`/author/register`)}>
-                  Create Account
-                </Button>
-              </>
-            )
-          ) : null}
+          {
+            status !== "loading" ?
+              session ?
+                <>
+                  <Button onClick={() => router.push(`/user/home`)} className="flex items-center">
+                    <div className="flex items-center gap-2"><VscAccount />Dashboard</div>
+                  </Button>
+                  <Button variant="outline" onClick={() => signOut()}>Logout</Button>
+                </>
+                :
+                <>
+                  <Button variant="outline" onClick={() => router.push(`/author/login`)}>
+                    {" "}
+                    Login
+                  </Button>
+                  <Button onClick={() => router.push(`/author/register`)}>
+                    Create Account
+                  </Button>
+                </> : null
+          }
         </div>
       </div>
     </div>

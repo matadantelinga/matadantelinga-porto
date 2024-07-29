@@ -126,7 +126,7 @@ export default function LoginPage() {
                             />
                             <div className="flex justify-end mt-2">
                                 <Link
-                                    href={"/"}
+                                    href={"/author/forgot-password"}
                                     className="font-hind font-semibold text-[12px] text-c-orange underline"
                                 >
                                     Lupa Kata Sandi?
@@ -138,7 +138,7 @@ export default function LoginPage() {
                                     <Button type="submit">Login</Button>
                                     <p className="font-hind font-semibold text-c-black text-[12px]">
                                         Belum punya akun?{" "}
-                                        <Link href={"/auth/register"} className="text-c-orange underline">
+                                        <Link href={"/author/register"} className="text-c-orange underline">
                                             Registrasi
                                         </Link>
                                     </p>
