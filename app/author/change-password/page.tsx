@@ -60,7 +60,6 @@ function ChangePassword() {
     });
 
     const myCode = searchParams && searchParams.get('code')
-    console.log(myCode && myCode)
     const sendForgot = async (values: z.infer<typeof forgotSchema>) => {
         const sendNow = async () => {
             try {

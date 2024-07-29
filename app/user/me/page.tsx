@@ -8,7 +8,6 @@ import { ItemData } from "@/components/Shared/UserItemData";
 
 export default function UserMe() {
     const { data: session, status } = useSession();
-
     return (
         <div className="flex flex-col">
             {
