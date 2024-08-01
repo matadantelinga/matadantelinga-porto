@@ -6,6 +6,7 @@ import React from "react";
 import Image from "next/image";
 import { IProductDetail } from "@/lib/interfaces/iproduct";
 import { DetailImage } from "./detail-image";
+import { DetailInfo } from "./detail-info";
 
 interface IIndexProps {
   slug: string;
@@ -43,6 +44,7 @@ export const PortfolioDetailIndex: React.FC<IIndexProps> = ({ slug }) => {
       <DetailImage
         dataImages={dataContent?.attributes.image.data}
       ></DetailImage>
+      <DetailInfo data={dataContent}></DetailInfo>
     </>
   );
 };
