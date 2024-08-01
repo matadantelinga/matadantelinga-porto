@@ -78,8 +78,31 @@
         height: 2px;
         background-color: #fb3131;
         display: block;
-        margin: 0.5rem auto 0
+        margin: 0.5rem auto 0;
       }
+    }
+  }
+}
+
+.hover-image-effect {
+  position: relative;
+  cursor: pointer;
+  &::after {
+    background-color: rgba($color: #000000, $alpha: 0.2);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    content: "";
+    display: block;
+    transition: all ease-in 0.3s;
+  }
+  &:hover {
+    &::after {
+      opacity: 0;
+      transition: all ease-out 0.3s;
     }
   }
 }

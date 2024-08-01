@@ -87,6 +87,13 @@ export interface IProduct {
 
 // Product Detail
 
+export interface IProductPriceDetail {
+  id: number;
+  title: string;
+  description: string;
+  price: string;
+}
+
 export interface IIProdDetailImageFormats {
   ext: string;
   url: string;
@@ -145,11 +152,11 @@ export interface IProductDetail {
       data: IProdDetailImage[];
     };
     design_mockup: {
-      data: any | null;
+      data: IProdDetailImage[];
     };
     before_after: {
-      data: any | null;
+      data: IProdDetailImage[];
     };
-    price_detail: any[];
+    price_detail: IProductPriceDetail[];
   };
 }

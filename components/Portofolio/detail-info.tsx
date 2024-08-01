@@ -3,6 +3,7 @@ import { GridWrapper } from "../Shared/GridWrapper";
 import React from "react";
 import { SectionTitle } from "../Shared/SectionTitle";
 import { InfoPropsItem } from "./info-props-item";
+import { DetailThumbnail } from "./detail-thumbnail";
 
 interface IDetailInfoProps {
   data: IProductDetail;
@@ -25,11 +26,11 @@ export const DetailInfo: React.FC<IDetailInfoProps> = ({ data }) => {
               <GridWrapper padding="pt-2 pb-2">
                 <InfoPropsItem
                   icon="/icons/icon-home.svg"
-                  data={"Kitchen Set"}
+                  data={"Room Name"}
                 ></InfoPropsItem>
                 <InfoPropsItem
                   icon="/icons/icon-cat.svg"
-                  data={"Rumah"}
+                  data={"Type Name"}
                 ></InfoPropsItem>
                 <InfoPropsItem
                   icon="/icons/icon-pin.svg"
@@ -48,6 +49,59 @@ export const DetailInfo: React.FC<IDetailInfoProps> = ({ data }) => {
                 ></InfoPropsItem>
               </GridWrapper>
             </div>
+            <div className="description-detail pt-10">
+              <h2 className="text-2xl font-bold pb-5">Tentang Project</h2>
+              <div className="page-content">
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: data.attributes.description.replace(
+                      /<p>&nbsp;<\/p>/g,
+                      ""
+                    ),
+                  }}
+                ></div>
+              </div>
+            </div>
+            {data.attributes.design_mockup.data.length > 0 && (
+              <>
+                <div className="description-detail pt-10">
+                  <h2 className="text-2xl font-bold pb-5">Desain</h2>
+                  <div className="thumb-wrapper flex gap-3">
+                    {data.attributes.design_mockup.data.map((design, index) => (
+                      <>
+                        {index <= 4 && (
+                          <React.Fragment key={index}>
+                            <DetailThumbnail
+                              imgUrl={design.attributes.url}
+                            ></DetailThumbnail>
+                          </React.Fragment>
+                        )}
+                      </>
+                    ))}
+                  </div>
+                </div>
+              </>
+            )}
+            {data.attributes.before_after.data.length > 0 && (
+              <>
+                <div className="description-detail py-10">
+                  <h2 className="text-2xl font-bold pb-5">Before & After</h2>
+                  <div className="thumb-wrapper flex gap-3">
+                    {data.attributes.before_after.data.map((design, index) => (
+                      <>
+                        {index <= 4 && (
+                          <React.Fragment key={index}>
+                            <DetailThumbnail
+                              imgUrl={design.attributes.url}
+                            ></DetailThumbnail>
+                          </React.Fragment>
+                        )}
+                      </>
+                    ))}
+                  </div>
+                </div>
+              </>
+            )}
           </div>
           <div className="col-span-12 md:col-span-4"></div>
         </GridWrapper>

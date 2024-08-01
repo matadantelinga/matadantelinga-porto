@@ -40,3 +40,20 @@
     }
   }
 }
+
+.description-detail {
+  .thumb-wrapper {
+    flex-wrap: wrap;
+    .thumb-item {
+      width: 178px;
+      height: 178px;
+      overflow: hidden;
+      img {
+        width: 178px;
+        height: 178px;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+  }
+}
