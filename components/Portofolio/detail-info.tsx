@@ -62,7 +62,7 @@ export const DetailInfo: React.FC<IDetailInfoProps> = ({ data }) => {
                 ></div>
               </div>
             </div>
-            {data.attributes.design_mockup.data.length > 0 && (
+            {data.attributes.design_mockup?.data?.length > 0 && (
               <>
                 <div className="description-detail pt-10">
                   <h2 className="text-2xl font-bold pb-5">Desain</h2>
@@ -82,7 +82,7 @@ export const DetailInfo: React.FC<IDetailInfoProps> = ({ data }) => {
                 </div>
               </>
             )}
-            {data.attributes.before_after.data.length > 0 && (
+            {data.attributes.before_after?.data?.length > 0 && (
               <>
                 <div className="description-detail py-10">
                   <h2 className="text-2xl font-bold pb-5">Before & After</h2>
