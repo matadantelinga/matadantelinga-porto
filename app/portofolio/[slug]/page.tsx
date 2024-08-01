@@ -1,9 +1,5 @@
-// Example type for portfolio item
-interface PortfolioItem {
-  title: string;
-  description: string;
-  // Add other properties as needed
-}
+import Basecontent from "@/components/basecontent";
+import { PortfolioDetailIndex } from "@/components/Portofolio/portofolio-detail-index";
 
 const PortfolioDetail = ({
   params,
@@ -11,9 +7,9 @@ const PortfolioDetail = ({
   params: { slug: string; locale: string };
 }) => {
   return (
-    <div>
-      <h1>DETAIL</h1>
-    </div>
+    <Basecontent>
+      <PortfolioDetailIndex slug={params.slug}></PortfolioDetailIndex>
+    </Basecontent>
   );
 };
 

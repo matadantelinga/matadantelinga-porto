@@ -84,3 +84,72 @@ export interface IProduct {
   id: number;
   attributes: IProductAttributes;
 }
+
+// Product Detail
+
+export interface IIProdDetailImageFormats {
+  ext: string;
+  url: string;
+  hash: string;
+  mime: string;
+  name: string;
+  path: string | null;
+  size: number;
+  width: number;
+  height: number;
+}
+
+export interface IProdDetailImageAttr {
+  name: string;
+  alternativeText: string | null;
+  caption: string | null;
+  width: number;
+  height: number;
+  formats: {
+    large: IIProdDetailImageFormats;
+    small: IIProdDetailImageFormats;
+    medium: IIProdDetailImageFormats;
+    thumbnail: IIProdDetailImageFormats;
+  };
+  hash: string;
+  ext: string;
+  mime: string;
+  size: number;
+  url: string;
+  previewUrl: string | null;
+  provider: string;
+  provider_metadata: any | null;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface IProdDetailImage {
+  id: number;
+  attributes: IProdDetailImageAttr;
+}
+
+export interface IProductDetail {
+  id: number;
+  attributes: {
+    title: string;
+    luas: string;
+    timeline_project: string;
+    location: string;
+    description: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    slug: string;
+    price_total: string;
+    image: {
+      data: IProdDetailImage[];
+    };
+    design_mockup: {
+      data: any | null;
+    };
+    before_after: {
+      data: any | null;
+    };
+    price_detail: any[];
+  };
+}

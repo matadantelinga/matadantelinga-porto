@@ -22,7 +22,7 @@ const LatestProject = () => {
 
   const [queryParams, setQueryParams] = useState<IProductQueryParams>({
     size: 12,
-    room: "",
+    room: "kitchen-set",
     type: "",
     style: "",
   });
@@ -38,7 +38,7 @@ const LatestProject = () => {
 
   const setActiveFilter = (type: string, value: string) => {
     setQueryParams((prevParams) => ({
-      ...prevParams,
+      size: prevParams.size,
       [type]: value,
     }));
   };

@@ -21,6 +21,7 @@ export const getData = (url: string) =>
     });
 
 export const getDataOpen = (url: string) =>
+  
   axios
     .get(`${process.env.URL_API + url}`)
     .then((res) => {
