@@ -4,6 +4,8 @@ import React from "react";
 import { SectionTitle } from "../Shared/SectionTitle";
 import { InfoPropsItem } from "./info-props-item";
 import { DetailThumbnail } from "./detail-thumbnail";
+import { AskPrice } from "../AskPrice/AskPrice";
+import { AskForm } from "../AskPrice/AskForm";
 
 interface IDetailInfoProps {
   data: IProductDetail;
@@ -103,7 +105,12 @@ export const DetailInfo: React.FC<IDetailInfoProps> = ({ data }) => {
               </>
             )}
           </div>
-          <div className="col-span-12 md:col-span-4"></div>
+          <div className="col-span-12 md:col-span-4">
+            <div className="border shadow-md rounded-xl p-5">
+              <h2 className="text-2xl font-bold pb-5">Tanya Harga Sekarang</h2>
+              <AskForm></AskForm>
+            </div>
+          </div>
         </GridWrapper>
       </section>
     </>
