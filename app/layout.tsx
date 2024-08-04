@@ -4,6 +4,7 @@ import SessionWrapper from "@/components/SessionWrapper";
 import Basecontent from "@/components/basecontent";
 import { Inter } from "next/font/google";
 import "./globals.scss";
+import ModalWrapper from "@/components/Shared/ModalWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,6 +26,7 @@ export default function RootLayout({
           {children}
           <Basecontent>
             <Footer />
+            <ModalWrapper />
           </Basecontent>
         </body>
       </SessionWrapper>

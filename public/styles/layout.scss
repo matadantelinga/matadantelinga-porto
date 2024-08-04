@@ -106,3 +106,27 @@
     }
   }
 }
+
+.numbering {
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+
+  &.big {
+    width: 50px;
+    height: 50px;
+  }
+  &.small {
+    width: 28px;
+    height: 28px;
+  }
+  &.yellow-opac {
+    background-color: #fada2537;
+  }
+  &.black {
+    background-color: #000000;
+    color: #fff;
+  }
+}

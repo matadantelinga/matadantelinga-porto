@@ -1,17 +1,29 @@
+import { useModalStore } from "@/hooks/useModal";
 import { IProductDetail } from "@/lib/interfaces/iproduct";
-import { GridWrapper } from "../Shared/GridWrapper";
 import React from "react";
-import { SectionTitle } from "../Shared/SectionTitle";
-import { InfoPropsItem } from "./info-props-item";
-import { DetailThumbnail } from "./detail-thumbnail";
-import { AskPrice } from "../AskPrice/AskPrice";
 import { AskForm } from "../AskPrice/AskForm";
+import { GridWrapper } from "../Shared/GridWrapper";
+import { SectionTitle } from "../Shared/SectionTitle";
+import { DetailThumbnail } from "./detail-thumbnail";
+import { InfoPropsItem } from "./info-props-item";
+import { PriceDetail } from "./price-detail";
 
 interface IDetailInfoProps {
   data: IProductDetail;
 }
 
 export const DetailInfo: React.FC<IDetailInfoProps> = ({ data }) => {
+  const { openModal } = useModalStore();
+
+  const seePriceDetail = () => {
+    openModal(
+      <PriceDetail
+        image={data?.attributes?.image?.data[0]}
+        prices={data?.attributes?.price_detail}
+      ></PriceDetail>
+    );
+    console.log("JSS");
+  };
   return (
     <>
       <section className="wrapper detail-info-wrapper">
@@ -20,7 +32,10 @@ export const DetailInfo: React.FC<IDetailInfoProps> = ({ data }) => {
             <SectionTitle>{data.attributes.title}</SectionTitle>
             <div className="price py-5">
               IDR. {data.attributes.price_total}{" "}
-              <span className="text-c-black underline cursor-pointer">
+              <span
+                className="text-c-black underline cursor-pointer"
+                onClick={seePriceDetail}
+              >
                 Lihat Detail
               </span>
             </div>

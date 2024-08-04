@@ -21,7 +21,7 @@ const DreamStepper: React.FC<IDreamStepperProps> = ({ accordionItems }) => {
           {accordionItems?.map((item, index) => (
             <React.Fragment key={item.id}>
               <div className="design-accordion__item py-2">
-                <div className="numbering">{index + 1}</div>
+                <div className="numbering yellow-opac big">{index + 1}</div>
                 <div className="design-accordion__item-content">
                   <AccordionItem value={`item${item.id}`}>
                     <AccordionTrigger>{item.title}</AccordionTrigger>
