@@ -22,7 +22,7 @@ const LatestProject = () => {
 
   const [queryParams, setQueryParams] = useState<IProductQueryParams>({
     size: 12,
-    room: "kitchen-set",
+    room: "",
     type: "",
     style: "",
   });
@@ -47,11 +47,15 @@ const LatestProject = () => {
     setMenus((prevMenus) =>
       prevMenus.map((menu) =>
         menu.id === selectedMenu.id
-          ? { ...menu, isActive: true }
+          ? { ...menu, isActive: !menu.isActive }
           : { ...menu, isActive: false }
       )
     );
-    setActiveFilter(selectedMenu.type, selectedMenu.value);
+    if (selectedMenu.isActive) {
+      setActiveFilter("", ""); // or handle the filter reset as needed
+    } else {
+      setActiveFilter(selectedMenu.type, selectedMenu.value);
+    }
   };
 
   if (isLoading) {

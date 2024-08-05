@@ -4,9 +4,10 @@ import React from "react";
 import { AskForm } from "../AskPrice/AskForm";
 import { GridWrapper } from "../Shared/GridWrapper";
 import { SectionTitle } from "../Shared/SectionTitle";
-import { DetailThumbnail } from "./detail-thumbnail";
-import { InfoPropsItem } from "./info-props-item";
-import { PriceDetail } from "./price-detail";
+import { DetailThumbnail } from "./DetailThumbnail";
+import { InfoPropsItem } from "./InfoPropsItem";
+import { PriceDetail } from "./PriceDetail";
+import { DetailImageSlider } from "./DetailImageSlider";
 
 interface IDetailInfoProps {
   data: IProductDetail;
@@ -22,8 +23,8 @@ export const DetailInfo: React.FC<IDetailInfoProps> = ({ data }) => {
         prices={data?.attributes?.price_detail}
       ></PriceDetail>
     );
-    console.log("JSS");
   };
+
   return (
     <>
       <section className="wrapper detail-info-wrapper">
@@ -32,12 +33,14 @@ export const DetailInfo: React.FC<IDetailInfoProps> = ({ data }) => {
             <SectionTitle>{data.attributes.title}</SectionTitle>
             <div className="price py-5">
               IDR. {data.attributes.price_total}{" "}
-              <span
-                className="text-c-black underline cursor-pointer"
-                onClick={seePriceDetail}
-              >
-                Lihat Detail
-              </span>
+              {data.attributes.price_detail.length > 0 && (
+                <span
+                  className="text-c-black underline cursor-pointer"
+                  onClick={seePriceDetail}
+                >
+                  Lihat Detail
+                </span>
+              )}
             </div>
             <div className="bg-c-gray p-5 rounded-lg">
               <GridWrapper padding="pt-2 pb-2">

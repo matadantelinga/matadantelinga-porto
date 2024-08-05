@@ -1,6 +1,6 @@
 import Basecontent from "@/components/basecontent";
+import { PortofolioList } from "@/components/Portofolio/PortofolioList";
 import { PageBanner } from "@/components/Shared/Pagebanner";
-import { PortofolioList } from "./PortofolioList";
 
 export default function PortofilioPage() {
   return (

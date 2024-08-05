@@ -5,8 +5,8 @@ import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import Image from "next/image";
 import { IProductDetail } from "@/lib/interfaces/iproduct";
-import { DetailImage } from "./detail-image";
-import { DetailInfo } from "./detail-info";
+import { DetailImage } from "./DetailImage";
+import { DetailInfo } from "./DetailInfo";
 
 interface IIndexProps {
   slug: string;

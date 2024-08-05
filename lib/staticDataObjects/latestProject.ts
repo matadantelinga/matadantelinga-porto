@@ -14,7 +14,7 @@ export const StaticLatestProjectMenu: ILatestProjectMenu[] = [
     id: 1,
     icon: "/icons/icon-proj-kitchen.svg",
     label: "Kitchen Set",
-    isActive: true,
+    isActive: false,
     type: "room",
     value: ePortofolioRoom.KITCHEN,
   },

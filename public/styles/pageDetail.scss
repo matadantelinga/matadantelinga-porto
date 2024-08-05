@@ -1,4 +1,27 @@
 .detail-images-wrapper {
+  &.slider {
+    .main-img {
+      img {
+        width: 50%;
+        height: 400px;
+        margin: auto;
+      }
+    }
+    .slider-thumbnail {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      padding: 1rem 0;
+      .img-item {
+        cursor: pointer;
+        img {
+          width: 110px;
+          height: 110px;
+          border-radius: 13px;
+        }
+      }
+    }
+  }
   .img-item {
     overflow: hidden;
     border-radius: 13px;

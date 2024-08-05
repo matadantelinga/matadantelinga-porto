@@ -1,5 +1,5 @@
 import Basecontent from "@/components/basecontent";
-import { PortfolioDetailIndex } from "@/components/Portofolio/portofolio-detail-index";
+import { PortfolioDetailIndex } from "@/components/Portofolio/PortofolioDetailIndex";
 
 const PortfolioDetail = ({
   params,

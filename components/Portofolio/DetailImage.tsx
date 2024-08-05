@@ -2,12 +2,20 @@ import { IProdDetailImage } from "@/lib/interfaces/iproduct";
 import React from "react";
 import { GridWrapper } from "../Shared/GridWrapper";
 import Image from "next/image";
+import { useModalStore } from "@/hooks/useModal";
+import { DetailImageSlider } from "./DetailImageSlider";
 
 interface IDetailImageProps {
   dataImages: IProdDetailImage[];
 }
 
 export const DetailImage: React.FC<IDetailImageProps> = ({ dataImages }) => {
+  const { openModal } = useModalStore();
+
+  const seeDetailImage = () => {
+    openModal(<DetailImageSlider dataImages={dataImages}></DetailImageSlider>);
+  };
+
   return (
     <>
       <section className="wrapper detail-images-wrapper">
@@ -15,7 +23,7 @@ export const DetailImage: React.FC<IDetailImageProps> = ({ dataImages }) => {
           {dataImages.length > 1 ? (
             <>
               <div className="col-span-12 md:col-span-6">
-                <div className="img-item main-image">
+                <div className="img-item main-image" onClick={seeDetailImage}>
                   <Image
                     src={`${
                       process.env.URL_MEDIA + dataImages[0]?.attributes.url
@@ -32,7 +40,10 @@ export const DetailImage: React.FC<IDetailImageProps> = ({ dataImages }) => {
                     <React.Fragment key={index}>
                       {index > 0 && (
                         <div className="col-span-6">
-                          <div className="img-item small-image">
+                          <div
+                            className="img-item small-image"
+                            onClick={seeDetailImage}
+                          >
                             <Image
                               src={`${
                                 process.env.URL_MEDIA + image?.attributes.url
