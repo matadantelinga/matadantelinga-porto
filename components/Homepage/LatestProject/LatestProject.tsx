@@ -21,7 +21,7 @@ const LatestProject = () => {
   );
 
   const [queryParams, setQueryParams] = useState<IProductQueryParams>({
-    size: 12,
+    size: 8,
     room: "",
     type: "",
     style: "",
