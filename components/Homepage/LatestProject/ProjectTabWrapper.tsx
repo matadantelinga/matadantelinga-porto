@@ -15,7 +15,7 @@ export const ProjectTabWrapper: React.FC<TabWrapperProps> = ({
 }) => {
   return (
     <>
-      <div className="col-span-12 md:col-span-6 md:col-start-4">
+      <div className="col-span-12 md:col-span-6 md:col-start-4 tab-wrapper">
         <ul className="flex icon-menu-list">
           {menus.map((menu) => (
             <React.Fragment key={menu.id}>

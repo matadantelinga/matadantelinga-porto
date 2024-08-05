@@ -1,3 +1,13 @@
+.room-cat-item {
+  .post-card {
+    .post-image {
+      height: 100%;
+      img {
+        height: auto;
+      }
+    }
+  }
+}
 .post-card {
   border-radius: 13px;
   height: 100%;
@@ -12,8 +22,12 @@
       border-radius: 13px;
       width: 100%;
       height: 280px;
+      @media (max-width: 767px) {
+        height: 140px;
+      }
     }
   }
+
   .post-detail {
     &::before {
       position: absolute;

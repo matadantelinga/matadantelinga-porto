@@ -93,7 +93,7 @@ const LatestProject = () => {
       <GridWrapper>
         {products?.map((prod) => (
           <React.Fragment>
-            <div className="col-span-3 md:col-span-3">
+            <div className="col-span-6 md:col-span-3">
               <ProductCard data={prod}></ProductCard>
             </div>
           </React.Fragment>

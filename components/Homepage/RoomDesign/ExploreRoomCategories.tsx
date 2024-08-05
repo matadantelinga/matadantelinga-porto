@@ -44,7 +44,7 @@ export const ExploreRoomCategories = () => {
       <GridWrapper padding="py-0">
         {categories?.map((cat, index) => (
           <React.Fragment key={index}>
-            <div className="col-span-12 md:col-span-6">
+            <div className="col-span-6 md:col-span-6 room-cat-item">
               <CategoryCard data={cat.attributes}></CategoryCard>
             </div>
           </React.Fragment>

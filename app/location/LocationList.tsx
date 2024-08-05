@@ -40,7 +40,7 @@ export const LocationList: React.FC = () => {
       <div className="w-full py-10 grid grid-cols-12 gap-4">
         {dataContent?.map((loc) => (
           <React.Fragment key={loc.id}>
-            <div className="col-span-6">
+            <div className="col-span-12 md:col-span-6">
               <LocationCard data={loc}></LocationCard>
             </div>
           </React.Fragment>

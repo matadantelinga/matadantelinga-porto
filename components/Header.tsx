@@ -15,10 +15,10 @@ export default function Header() {
 
   const router = useRouter();
   return (
-    <div className="sticky top-0 bg-white z-20 ">
+    <header className="sticky top-0 bg-white z-20 ">
       <div className="wrapper flex items-center justify-between py-3">
         <div className="relative flex items-center gap-11">
-          <Link href="/">
+          <Link className="logo" href="/">
             <Image src="/images/logo.png" width={66} height={66} alt="logo" />
           </Link>
           <ul className="flex items-center font-medium text-sm gap-10">
@@ -33,7 +33,7 @@ export default function Header() {
             </li>
           </ul>
         </div>
-        <div className="relative gap-3 flex">
+        <div className="relative gap-3 flex invisible md:visible">
           {
             status !== "loading" ?
               session ?
@@ -56,6 +56,6 @@ export default function Header() {
           }
         </div>
       </div>
-    </div>
+    </header>
   );
 }

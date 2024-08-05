@@ -26,7 +26,7 @@ const SectionTitle = React.forwardRef<
 >(({ className, color, fontSize, ...props }, ref) => (
   <h2
     ref={ref}
-    className={cn(sectionTitleVariants({ color, fontSize }), className)}
+    className={cn(sectionTitleVariants({ color, fontSize }), className, "section-title")}
     {...props}
   />
 ));

@@ -1,3 +1,76 @@
+header {
+  .logo {
+    @media (max-width: 767px) {
+      min-width: 50px;
+    }
+  }
+}
+
+.mainslider {
+  .h-\[calc\(100vh-89px\)\] {
+    @media (max-width: 767px) {
+      height: 400px;
+    }
+  }
+}
+
+.section-title {
+  @media (max-width: 767px) {
+    font-size: 1.5rem;
+  }
+}
+
+.grid,
+.wrapper {
+  &.py-10 {
+    @media (max-width: 767px) {
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+  }
+}
+
+.search-bar-wrapper {
+  @media (max-width: 767px) {
+    z-index: 99;
+    .flex.justify-between.w-full {
+      flex-wrap: wrap;
+    }
+    .search-item-btn {
+      width: 100%;
+      margin-bottom: 10px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+      .icon {
+        flex: 0 0 auto;
+      }
+
+      .selection-btn {
+        flex: 1;
+      }
+      select {
+        width: 100%;
+        border: solid 0.5px #a8a8a8;
+        border-radius: 7px;
+        padding: 5px 10px;
+      }
+    }
+    .h-\[100px\] {
+      height: fit-content;
+    }
+    .rounded-full {
+      border-radius: 10px;
+      max-width: 95%;
+      z-index: 99;
+    }
+
+    button {
+      width: 100%;
+    }
+  }
+}
+
 .half-bg-black {
   position: relative;
   &::before {
@@ -57,6 +130,21 @@
   }
 }
 
+.tab-wrapper {
+  max-width: 100%;
+  .icon-menu-list {
+    @media (max-width: 767px) {
+      overflow-x: scroll;
+      li {
+        min-width: 120px;
+        &.px-5 {
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
+        }
+      }
+    }
+  }
+}
 .icon-menu-list {
   margin-top: 1rem;
   li {

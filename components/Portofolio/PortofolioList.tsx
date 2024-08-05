@@ -93,8 +93,8 @@ export const PortofolioList = () => {
       <section className="wrapper">
         <GridWrapper padding="pt-0 pb-10">
           {products?.map((prod) => (
-            <React.Fragment>
-              <div className="col-span-3 md:col-span-3">
+            <React.Fragment key={prod.id}>
+              <div className="col-span-6 md:col-span-3">
                 <ProductCard data={prod}></ProductCard>
               </div>
             </React.Fragment>

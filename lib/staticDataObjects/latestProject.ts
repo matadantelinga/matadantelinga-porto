@@ -37,10 +37,10 @@ export const StaticLatestProjectMenu: ILatestProjectMenu[] = [
   {
     id: 4,
     icon: "/icons/icon-proj-cabinet.svg",
-    label: "Walk-in Closet",
+    label: "Living Room",
     isActive: false,
     type: "room",
-    value: ePortofolioRoom.WALKINCLOSET,
+    value: ePortofolioRoom.LIVINGROOM,
   },
   {
     id: 5,
