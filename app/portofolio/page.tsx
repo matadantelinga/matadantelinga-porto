@@ -10,9 +10,7 @@ export default function PortofilioPage() {
           pageBannerTitle="Cari desain sesuai keinginan mu"
           imageUrl="/images/banner-portofolio.png"
         ></PageBanner>
-        <section className="wrapper py-10">
-          <PortofolioList></PortofolioList>
-        </section>
+        <PortofolioList></PortofolioList>
       </Basecontent>
     </>
   );
