@@ -42,19 +42,19 @@ export default function HomepageIndex() {
         <SearchMain />
       </section>
       <section className="wrapper py-10">
-        <RoomDesign data={dataContent.design_room} />
+        <RoomDesign data={dataContent?.design_room} />
       </section>
       <section className="bg-c-black2 py-10">
         <div className="wrapper">
           <DreamDesign
-            data={dataContent.dream_design}
-            itemSliderDream={dataContent.item_slider_dream}
+            data={dataContent?.dream_design}
+            itemSliderDream={dataContent?.item_slider_dream}
           />
         </div>
       </section>
       <section className="half-bg-black">
         <div className="wrapper py-10">
-          <WhyChoose data={dataContent.why_us}></WhyChoose>
+          <WhyChoose data={dataContent?.why_us}></WhyChoose>
         </div>
       </section>
       <section className="wrapper py-10">

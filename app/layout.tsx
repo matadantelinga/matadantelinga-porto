@@ -5,6 +5,7 @@ import Basecontent from "@/components/basecontent";
 import { Inter } from "next/font/google";
 import "./globals.scss";
 import ModalWrapper from "@/components/Shared/ModalWrapper";
+import { MobileNav } from "@/components/MobileNav";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +25,8 @@ export default function RootLayout({
         <body className={inter.className} suppressHydrationWarning={true}>
           <Header />
           {children}
+
+          <MobileNav />
           <Basecontent>
             <Footer />
             <ModalWrapper />

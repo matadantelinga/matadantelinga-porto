@@ -15,7 +15,7 @@ export const ProductCard: React.FC<ICardProps> = ({ data }) => {
 
   return (
     <article className="post-card product">
-      <div className="post-image">
+      <div className="post-image" onClick={seeDetail}>
         <img
           src={`${
             process.env.URL_MEDIA +
