@@ -10,6 +10,7 @@ import React, { useState } from "react";
 export const ExploreRoomCategories = () => {
   const [queryParams, setQueryParams] = useState<IProductQueryParams>({
     size: 4,
+    page: 1,
   });
 
   const query = useQuery({
