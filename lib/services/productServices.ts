@@ -15,7 +15,7 @@ export const getAllProducts = async (params: IProductQueryParams) => {
   }
 
   const filterString = filters.length > 0 ? `&${filters.join("&")}` : "";
-  const url = `/products?pagination[pageSize]=${params.size}${filterString}&populate=*`;
+  const url = `/products?pagination[page]=${params.page}&pagination[pageSize]=${params.size}${filterString}&populate=*`;
 
   return await getData(url);
 };

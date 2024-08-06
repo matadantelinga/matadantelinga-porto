@@ -18,7 +18,8 @@ export interface IRoomCategory {
 }
 
 export interface IProductQueryParams {
-  size: number;
+  size: number; // Data Size to show
+  page: number; // Current page number
   room?: string;
   type?: string;
   style?: string;

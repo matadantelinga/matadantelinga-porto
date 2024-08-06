@@ -22,6 +22,7 @@ const LatestProject = () => {
 
   const [queryParams, setQueryParams] = useState<IProductQueryParams>({
     size: 8,
+    page: 1,
     room: "",
     type: "",
     style: "",
@@ -39,6 +40,7 @@ const LatestProject = () => {
   const setActiveFilter = (type: string, value: string) => {
     setQueryParams((prevParams) => ({
       size: prevParams.size,
+      page: prevParams.page,
       [type]: value,
     }));
   };
@@ -92,7 +94,7 @@ const LatestProject = () => {
       </GridWrapper>
       <GridWrapper>
         {products?.map((prod) => (
-          <React.Fragment>
+          <React.Fragment key={prod.id}>
             <div className="col-span-6 md:col-span-3">
               <ProductCard data={prod}></ProductCard>
             </div>

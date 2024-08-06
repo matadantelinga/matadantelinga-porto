@@ -42,7 +42,7 @@ export default function Footer() {
       <div className="relative">
         <div className="bg-c-gray w-full min-h-150px px-5 pb-8 py-14">
           <div className="wrapper flex justify-between gap-5 [&_h4]:font-semibold  [&_h4]:mb-5">
-            <div>
+            <div className="">
               <Link className="mb-3 block" href="/">
                 <Image
                   src="/images/logo.png"

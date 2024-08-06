@@ -281,3 +281,29 @@ select {
     }
   }
 }
+
+.pagination-wrapper {
+  ul {
+    li {
+      padding: 0 5px;
+      a {
+        width: 30px;
+        height: 30px;
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &.active {
+          color: #000;
+          background: #fad925;
+        }
+        &.prev-link {
+          min-width: 80px;
+        }
+        &.next-link {
+          min-width: 50px;
+        }
+      }
+    }
+  }
+}

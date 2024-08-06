@@ -95,3 +95,17 @@ export interface iGeneralInfo {
   seo: any | null;
   logo: iLogo;
 }
+
+export interface IPagination {
+  page: number;
+  pageSize: number;
+  pageCount: number;
+  total: number;
+}
+
+export interface IPaginationInfo {
+  startPage: number;
+  endPage: number;
+  hasPrevious: boolean;
+  hasNext: boolean;
+}
