@@ -3,6 +3,8 @@ import { GridWrapper } from "@/components/Shared/GridWrapper";
 import { ProductCard } from "@/components/Shared/ProductCard";
 import { SectionTitle } from "@/components/Shared/SectionTitle";
 import { usePaginationStore } from "@/hooks/usePagination";
+import { useQueryParamsStore } from "@/hooks/useQueryParams";
+import { eSearchSelectOption } from "@/lib/enums/eGeneral";
 import { IProductQueryParams } from "@/lib/interfaces/icategory";
 import { IProduct } from "@/lib/interfaces/iproduct";
 import { getAllProducts } from "@/lib/services/productServices";
@@ -12,20 +14,18 @@ import {
 } from "@/lib/staticDataObjects/latestProject";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
+import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { PaginationNav } from "../Shared/PaginationNav";
 import { FilterNav } from "./FilterNav";
-import { useQueryParamsStore } from "@/hooks/useQueryParams";
-import { useParams, useRouter, useSearchParams } from "next/navigation";
-import { eSearchSelectOption } from "@/lib/enums/eGeneral";
 
 export const PortofolioList = () => {
-  const params = useSearchParams();
+  const searchParams = useSearchParams();
   const router = useRouter();
 
-  const style = params.get(eSearchSelectOption.STYLE);
-  const room = params.get(eSearchSelectOption.ROOM);
-  const type = params.get(eSearchSelectOption.TYPE);
+  const [style, setStyle] = useState<string | null>(null);
+  const [room, setRoom] = useState<string | null>(null);
+  const [type, setType] = useState<string | null>(null);
 
   const initialQueryParams: IProductQueryParams = {
     room: room ?? "",
@@ -40,6 +40,14 @@ export const PortofolioList = () => {
   const [menus, setMenus] = useState<ILatestProjectMenu[]>(
     StaticLatestProjectMenu
   );
+
+  useEffect(() => {
+    if (searchParams) {
+      setStyle(searchParams.get(eSearchSelectOption.STYLE));
+      setRoom(searchParams.get(eSearchSelectOption.ROOM));
+      setType(searchParams.get(eSearchSelectOption.TYPE));
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     const urlQueryParams: IProductQueryParams = {
