@@ -24,3 +24,11 @@ export interface IProductQueryParams {
   type?: string;
   style?: string;
 }
+
+export interface ICategorySelectOption {
+  id: number;
+  attributes: {
+    title: string;
+    slug: string;
+  };
+}
