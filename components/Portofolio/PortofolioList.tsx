@@ -1,5 +1,4 @@
 "use client";
-
 import { GridWrapper } from "@/components/Shared/GridWrapper";
 import { ProductCard } from "@/components/Shared/ProductCard";
 import { SectionTitle } from "@/components/Shared/SectionTitle";
@@ -17,17 +16,48 @@ import React, { useEffect, useState } from "react";
 import { PaginationNav } from "../Shared/PaginationNav";
 import { FilterNav } from "./FilterNav";
 import { useQueryParamsStore } from "@/hooks/useQueryParams";
+import { useParams, useRouter, useSearchParams } from "next/navigation";
+import { eSearchSelectOption } from "@/lib/enums/eGeneral";
 
 export const PortofolioList = () => {
+  const params = useSearchParams();
+  const router = useRouter();
+
+  const style = params.get(eSearchSelectOption.STYLE);
+  const room = params.get(eSearchSelectOption.ROOM);
+  const type = params.get(eSearchSelectOption.TYPE);
+
+  const initialQueryParams: IProductQueryParams = {
+    room: room ?? "",
+    style: style ?? "",
+    type: type ?? "",
+    size: 12,
+    page: 1,
+  };
+
+  const [urlParams, setUrlParams] =
+    useState<IProductQueryParams>(initialQueryParams);
   const [menus, setMenus] = useState<ILatestProjectMenu[]>(
     StaticLatestProjectMenu
   );
+
+  useEffect(() => {
+    const urlQueryParams: IProductQueryParams = {
+      room: room ?? "",
+      style: style ?? "",
+      type: type ?? "",
+      size: 12,
+      page: 1,
+    };
+
+    setUrlParams(urlQueryParams);
+  }, [room, type, style]);
 
   const { paginationProps, setPaginationProps, setLoading, loading } =
     usePaginationStore();
 
   const { queryParams, setQueryParams } = useQueryParamsStore((state) => ({
-    queryParams: state.queryParams,
+    queryParams: urlParams ?? state.queryParams,
     setQueryParams: state.setQueryParams,
   }));
 
@@ -52,11 +82,22 @@ export const PortofolioList = () => {
           : { ...menu, isActive: false }
       )
     );
+
     if (selectedMenu.isActive) {
       setActiveFilter("", ""); // or handle the filter reset as needed
     } else {
       setActiveFilter(selectedMenu.type, selectedMenu.value);
     }
+  };
+
+  const resetFilter = () => {
+    // Reset urlParams and queryParams
+    setUrlParams(initialQueryParams);
+    setQueryParams(initialQueryParams);
+    setMenus(StaticLatestProjectMenu); // Reset menus to initial state
+
+    // Update the URL to reflect the reset state
+    router.push("/portofolio");
   };
 
   useEffect(() => {
@@ -91,7 +132,11 @@ export const PortofolioList = () => {
             <SectionTitle>Proyek Pilihan Untukmu</SectionTitle>
           </div>
           <div className="col-span-12">
-            <FilterNav onMenuClick={handleMenuClick} menus={menus}></FilterNav>
+            <FilterNav
+              onMenuClick={handleMenuClick}
+              menus={menus}
+              resetFilter={resetFilter}
+            ></FilterNav>
           </div>
         </GridWrapper>
       </section>

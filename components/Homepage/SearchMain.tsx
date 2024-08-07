@@ -60,15 +60,9 @@ export default function SearchMain() {
   };
 
   const submitSearch = () => {
-    const selectedQueryParams: IProductQueryParams = {
-      room: selectedRoom,
-      style: selectedStyle,
-      type: selectedType,
-      size: 12,
-      page: 1,
-    };
-    setQueryParams(selectedQueryParams);
-    router.push(`/portofolio`);
+    router.push(
+      `/portofolio?type=${selectedType}&room=${selectedRoom}&style=${selectedStyle}`
+    );
   };
 
   return (

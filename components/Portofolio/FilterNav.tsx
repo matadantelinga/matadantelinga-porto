@@ -1,16 +1,25 @@
 import { ILatestProjectMenu } from "@/lib/staticDataObjects/latestProject";
 import React from "react";
 import { GridWrapper } from "../Shared/GridWrapper";
+import { useQueryParamsStore } from "@/hooks/useQueryParams";
+import { IProductQueryParams } from "@/lib/interfaces/icategory";
 
 interface IFilterNavProps {
   onMenuClick: (selectedMenu: ILatestProjectMenu) => void;
   menus: ILatestProjectMenu[];
+  resetFilter: () => void;
 }
 
 export const FilterNav: React.FC<IFilterNavProps> = ({
   onMenuClick,
   menus,
+  resetFilter,
 }) => {
+  const { queryParams, setQueryParams } = useQueryParamsStore((state) => ({
+    queryParams: state.queryParams,
+    setQueryParams: state.setQueryParams,
+  }));
+
   return (
     <>
       <div className="filterNavWrapper">
@@ -35,6 +44,16 @@ export const FilterNav: React.FC<IFilterNavProps> = ({
                   </div>
                 </React.Fragment>
               ))}
+              {(queryParams.room || queryParams.style || queryParams.type) && (
+                <div className="col-span-2">
+                  <div className="flex items-center gap-1 text-c-red min-h-14">
+                    <button onClick={resetFilter} className="flex items-center">
+                      <span className="text-sm">Reset Filter</span>{" "}
+                      <span className="text-xl block"> &times;</span>
+                    </button>
+                  </div>
+                </div>
+              )}
             </GridWrapper>
           </div>
           <div className="col-span-12 md:col-span-6">
