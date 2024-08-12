@@ -39,10 +39,10 @@ export default function Footer() {
   return (
     <>
       {pathName !== "author" && pathName !== "user" ? <AskPrice /> : null}
-      <div className="relative">
+      <footer className="relative">
         <div className="bg-c-gray w-full min-h-150px px-5 pb-8 py-14">
-          <div className="wrapper flex justify-between gap-5 [&_h4]:font-semibold  [&_h4]:mb-5">
-            <div className="">
+          <div className="wrapper flex flex-wrap justify-between gap-5 [&_h4]:font-semibold  [&_h4]:mb-5">
+            <div className="footer-column">
               <Link className="mb-3 block" href="/">
                 <Image
                   src="/images/logo.png"
@@ -75,7 +75,7 @@ export default function Footer() {
                 </Link>
               </div>
             </div>
-            <div>
+            <div className="footer-column">
               <h4>Links</h4>
               <ul className="[&_a]:block [&_a]:py-1">
                 <li>
@@ -90,7 +90,7 @@ export default function Footer() {
                 </li>
               </ul>
             </div>
-            <div>
+            <div className="footer-column">
               <h4>Planet Dekor</h4>
               <ul className="[&_a]:block [&_a]:py-1">
                 <li>
@@ -114,7 +114,7 @@ export default function Footer() {
             &copy; {moment().format("YYYY")} Planet Dekor
           </div>
         </div>
-      </div>
+      </footer>
     </>
   );
 }
