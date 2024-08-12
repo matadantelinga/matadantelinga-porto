@@ -18,8 +18,9 @@ import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { PaginationNav } from "../Shared/PaginationNav";
 import { FilterNav } from "./FilterNav";
+import { Suspense } from 'react'
 
-export const PortofolioList = () => {
+const PortofolioListContent = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -170,4 +171,12 @@ export const PortofolioList = () => {
       </section>
     </>
   );
+}
+
+export const PortofolioList = () => {
+  return (
+    <Suspense>
+      <PortofolioListContent />
+    </Suspense>
+  )
 };
