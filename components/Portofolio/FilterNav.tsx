@@ -21,10 +21,6 @@ export const FilterNav: React.FC<IFilterNavProps> = ({
     setQueryParams: state.setQueryParams,
   }));
 
-  useEffect(() => {
-    console.log(urlParams)
-  }, [])
-
   return (
     <>
       <div className="filterNavWrapper">
