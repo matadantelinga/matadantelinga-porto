@@ -1,24 +1,29 @@
-import { ILatestProjectMenu } from "@/lib/staticDataObjects/latestProject";
-import React from "react";
-import { GridWrapper } from "../Shared/GridWrapper";
 import { useQueryParamsStore } from "@/hooks/useQueryParams";
-import { IProductQueryParams } from "@/lib/interfaces/icategory";
+import { ILatestProjectMenu } from "@/lib/staticDataObjects/latestProject";
+import React, { useEffect } from "react";
+import { GridWrapper } from "../Shared/GridWrapper";
 
 interface IFilterNavProps {
   onMenuClick: (selectedMenu: ILatestProjectMenu) => void;
   menus: ILatestProjectMenu[];
   resetFilter: () => void;
+  urlParams: string | null;
 }
 
 export const FilterNav: React.FC<IFilterNavProps> = ({
   onMenuClick,
   menus,
   resetFilter,
+  urlParams,
 }) => {
   const { queryParams, setQueryParams } = useQueryParamsStore((state) => ({
     queryParams: state.queryParams,
     setQueryParams: state.setQueryParams,
   }));
+
+  useEffect(() => {
+    console.log(urlParams)
+  }, [])
 
   return (
     <>
@@ -44,7 +49,10 @@ export const FilterNav: React.FC<IFilterNavProps> = ({
                   </div>
                 </React.Fragment>
               ))}
-              {(queryParams.room || queryParams.style || queryParams.type) && (
+              {(queryParams.room ||
+                queryParams.style ||
+                queryParams.type ||
+                urlParams) && (
                 <div className="col-span-2">
                   <div className="flex items-center gap-1 text-c-red min-h-14">
                     <button onClick={resetFilter} className="flex items-center">

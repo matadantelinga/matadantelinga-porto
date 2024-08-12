@@ -100,6 +100,10 @@ export const PortofolioList = () => {
 
   const resetFilter = () => {
     // Reset urlParams and queryParams
+
+    setStyle("");
+    setRoom("");
+    setType("");
     setUrlParams(initialQueryParams);
     setQueryParams(initialQueryParams);
     setMenus(StaticLatestProjectMenu); // Reset menus to initial state
@@ -144,6 +148,7 @@ export const PortofolioList = () => {
               onMenuClick={handleMenuClick}
               menus={menus}
               resetFilter={resetFilter}
+              urlParams={style || room || type}
             ></FilterNav>
           </div>
         </GridWrapper>
