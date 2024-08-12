@@ -265,7 +265,7 @@ header {
 .filterNavWrapper {
   li {
     list-style: none;
-    min-width: 125px;
+    min-width: 115px;
     min-height: 68px;
     label {
       font-size: 0.75rem;
@@ -375,4 +375,10 @@ footer {
       margin-right: -15px;
     }
   }
+}
+
+.button-reset {
+  position: absolute;
+  right: 0;
+  top: 0;
 }

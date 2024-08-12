@@ -1,11 +1,13 @@
 "use client";
+
 import { GridWrapper } from "@/components/Shared/GridWrapper";
 import { ProductCard } from "@/components/Shared/ProductCard";
 import { SectionTitle } from "@/components/Shared/SectionTitle";
 import { usePaginationStore } from "@/hooks/usePagination";
-import { useQueryParamsStore } from "@/hooks/useQueryParams";
-import { eSearchSelectOption } from "@/lib/enums/eGeneral";
-import { IProductQueryParams } from "@/lib/interfaces/icategory";
+import {
+  ICategorySelectOption,
+  IProductQueryParams,
+} from "@/lib/interfaces/icategory";
 import { IProduct } from "@/lib/interfaces/iproduct";
 import { getAllProducts } from "@/lib/services/productServices";
 import {
@@ -14,19 +16,28 @@ import {
 } from "@/lib/staticDataObjects/latestProject";
 import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { PaginationNav } from "../Shared/PaginationNav";
 import { FilterNav } from "./FilterNav";
-import { Suspense } from 'react'
+import { useQueryParamsStore } from "@/hooks/useQueryParams";
+import {
+  getAllTypesCategory,
+  getAllStylesCategory,
+  getAllRoomsCategory,
+} from "@/lib/services/categoryServices";
+import { eSearchSelectOption } from "@/lib/enums/eGeneral";
+import { useRouter, useSearchParams } from "next/navigation";
 
-const PortofolioListContent = () => {
+export const PortofolioListContent = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
-
   const [style, setStyle] = useState<string | null>(null);
   const [room, setRoom] = useState<string | null>(null);
   const [type, setType] = useState<string | null>(null);
+
+  const [menus, setMenus] = useState<ILatestProjectMenu[]>(
+    StaticLatestProjectMenu
+  );
 
   const initialQueryParams: IProductQueryParams = {
     room: room ?? "",
@@ -36,37 +47,11 @@ const PortofolioListContent = () => {
     page: 1,
   };
 
-  const [urlParams, setUrlParams] =
-    useState<IProductQueryParams>(initialQueryParams);
-  const [menus, setMenus] = useState<ILatestProjectMenu[]>(
-    StaticLatestProjectMenu
-  );
-
-  useEffect(() => {
-    if (searchParams) {
-      setStyle(searchParams.get(eSearchSelectOption.STYLE));
-      setRoom(searchParams.get(eSearchSelectOption.ROOM));
-      setType(searchParams.get(eSearchSelectOption.TYPE));
-    }
-  }, [searchParams]);
-
-  useEffect(() => {
-    const urlQueryParams: IProductQueryParams = {
-      room: room ?? "",
-      style: style ?? "",
-      type: type ?? "",
-      size: 12,
-      page: 1,
-    };
-
-    setUrlParams(urlQueryParams);
-  }, [room, type, style]);
-
   const { paginationProps, setPaginationProps, setLoading, loading } =
     usePaginationStore();
 
   const { queryParams, setQueryParams } = useQueryParamsStore((state) => ({
-    queryParams: urlParams ?? state.queryParams,
+    queryParams: state.queryParams,
     setQueryParams: state.setQueryParams,
   }));
 
@@ -74,6 +59,36 @@ const PortofolioListContent = () => {
     queryKey: ["qAllProducts", queryParams], // Add queryParams to the queryKey
     queryFn: () => getAllProducts(queryParams), // Fetch products based on queryParams
   });
+
+  const queryRooms = useQuery({
+    queryKey: ["qPortoRooms"],
+    queryFn: getAllRoomsCategory,
+  });
+
+  const queryStyles = useQuery({
+    queryKey: ["qPortoStyles"],
+    queryFn: getAllStylesCategory,
+  });
+
+  // Set url search params
+  useEffect(() => {
+    if (searchParams) {
+      const style = searchParams.get(eSearchSelectOption.STYLE);
+      const room = searchParams.get(eSearchSelectOption.ROOM);
+      const type = searchParams.get(eSearchSelectOption.TYPE);
+
+      // Set the filters based on the search parameters
+      if (style) {
+        setActiveFilter("style", style);
+      }
+      if (room) {
+        setActiveFilter("room", room);
+      }
+      if (type) {
+        setActiveFilter("type", type);
+      }
+    }
+  }, [searchParams, setQueryParams]);
 
   useEffect(() => {
     refetch();
@@ -91,7 +106,6 @@ const PortofolioListContent = () => {
           : { ...menu, isActive: false }
       )
     );
-
     if (selectedMenu.isActive) {
       setActiveFilter("", ""); // or handle the filter reset as needed
     } else {
@@ -99,25 +113,31 @@ const PortofolioListContent = () => {
     }
   };
 
+  useEffect(() => {
+    if (data?.data.meta?.pagination) {
+      setPaginationProps(data.data.meta.pagination);
+    }
+  }, [data?.data.meta?.pagination, setPaginationProps]);
+
+  const handleSelectOption = (
+    option: string,
+    optionType: eSearchSelectOption
+  ) => {
+    setActiveFilter(optionType, option);
+  };
+
   const resetFilter = () => {
     // Reset urlParams and queryParams
-
     setStyle("");
     setRoom("");
     setType("");
-    setUrlParams(initialQueryParams);
+    // setUrlParams(initialQueryParams);
     setQueryParams(initialQueryParams);
     setMenus(StaticLatestProjectMenu); // Reset menus to initial state
 
     // Update the URL to reflect the reset state
     router.push("/portofolio");
   };
-
-  useEffect(() => {
-    if (data?.data.meta?.pagination) {
-      setPaginationProps(data.data.meta.pagination);
-    }
-  }, [data?.data.meta?.pagination, setPaginationProps]);
 
   if (isLoading) {
     return (
@@ -137,6 +157,9 @@ const PortofolioListContent = () => {
   }
 
   const products: IProduct[] = data?.data.data;
+  const dataRooms: ICategorySelectOption[] = queryRooms?.data?.data?.data;
+  const dataStyles: ICategorySelectOption[] = queryStyles?.data?.data?.data;
+
   return (
     <>
       <section className="wrapper py-10">
@@ -150,6 +173,11 @@ const PortofolioListContent = () => {
               menus={menus}
               resetFilter={resetFilter}
               urlParams={style || room || type}
+              dataTypeOptions={dataRooms}
+              dataStyleOptions={dataStyles}
+              handleSelectOption={(option, optionType) =>
+                handleSelectOption(option, optionType)
+              }
             ></FilterNav>
           </div>
         </GridWrapper>
@@ -166,17 +194,19 @@ const PortofolioListContent = () => {
           ))}
         </GridWrapper>
       </section>
-      <section className="wrapper">
-        <PaginationNav></PaginationNav>
-      </section>
+      {paginationProps.total > 12 && (
+        <section className="wrapper">
+          <PaginationNav></PaginationNav>
+        </section>
+      )}
     </>
   );
-}
+};
 
 export const PortofolioList = () => {
   return (
     <Suspense>
       <PortofolioListContent />
     </Suspense>
-  )
+  );
 };
