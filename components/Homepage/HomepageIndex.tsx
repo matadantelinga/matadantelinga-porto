@@ -52,7 +52,7 @@ export default function HomepageIndex() {
           />
         </div>
       </section>
-      <section className="half-bg-black">
+      <section className="half-bg-black why-us">
         <div className="wrapper py-10">
           <WhyChoose data={dataContent?.why_us}></WhyChoose>
         </div>

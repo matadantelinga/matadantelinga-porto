@@ -26,8 +26,8 @@ header {
 .wrapper {
   &.py-10 {
     @media (max-width: 767px) {
-      padding-top: 1.5rem;
-      padding-bottom: 1.5rem;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
     }
   }
 }
@@ -63,8 +63,10 @@ header {
     }
     .rounded-full {
       border-radius: 10px;
-      max-width: 95%;
+      width: 100%;
       z-index: 99;
+      position: relative;
+      border-radius: 0;
     }
 
     button {
@@ -86,6 +88,17 @@ header {
   .wrapper {
     z-index: 2;
     position: relative;
+  }
+  &.why-us {
+    @media (max-width: 767px) {
+      &::before {
+        background-color: unset;
+      }
+
+      .section-title.text-c-white {
+        color: #17181a;
+      }
+    }
   }
 }
 
