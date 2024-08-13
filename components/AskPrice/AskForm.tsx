@@ -12,7 +12,7 @@ const formSchema = z.object({
   name: z.string().min(2, {
     message: "Nama harus diisi",
   }),
-  telp: z.string().min(5, {
+  phone: z.string().min(5, {
     message: "Telp harus diisi",
   }),
   email: z.string().email({
@@ -25,7 +25,7 @@ export function AskForm() {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      telp: "",
+      phone: "",
       email: "",
     },
   });
@@ -41,7 +41,7 @@ export function AskForm() {
         data: {
           email: values.email,
           name: values.name,
-          telp: values.telp,
+          phone: values.phone,
         },
       };
       const response = await axios.post(
@@ -85,10 +85,10 @@ export function AskForm() {
           </div>
           <div className="relative flex-1">
             <label>No. Telepon</label>
-            <input type="text" {...form.register("telp")} />
-            {form.formState.errors.telp ? (
+            <input type="text" {...form.register("phone")} />
+            {form.formState.errors.phone ? (
               <p className="text-red-500 mt-1">
-                {form.formState.errors.telp.message}
+                {form.formState.errors.phone.message}
               </p>
             ) : null}
           </div>
