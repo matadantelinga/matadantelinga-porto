@@ -42,8 +42,6 @@ export default function UserHome() {
     }
 
     const dataContent = query?.data?.data.data
-    console.log(dataContent)
-
 
     return (
         <div>

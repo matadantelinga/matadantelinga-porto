@@ -7,8 +7,8 @@ interface iUserMe {
 export function ItemData({ label, value, bgcolor }: iUserMe) {
     return (
         <div className={`flex items-start gap-3 py-2 px-4 ${bgcolor ? "bg-slate-50" : null}`}>
-            <div className="w-[200px] font-bold">{label}</div>
-            <div className="flex gap-1 flex-1 [&_p]:mt-0"><span></span>: {value}</div>
+            <div className="w-[120px] font-bold">{label}</div>
+            <div className="flex gap-1 flex-1 [&_p]:mt-0 "><span></span>: {value}</div>
         </div>
     )
 }
