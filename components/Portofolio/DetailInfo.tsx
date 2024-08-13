@@ -88,15 +88,16 @@ export const DetailInfo: React.FC<IDetailInfoProps> = ({ data }) => {
                   <h2 className="text-2xl font-bold pb-5">Desain</h2>
                   <div className="thumb-wrapper flex gap-3">
                     {data.attributes.design_mockup.data.map((design, index) => (
-                      <>
+                      <React.Fragment key={design.id}>
                         {index <= 4 && (
-                          <React.Fragment key={index}>
+                          <React.Fragment key={design.id}>
                             <DetailThumbnail
                               imgUrl={design.attributes.url}
+                              thumbUrls={data.attributes.design_mockup.data}
                             ></DetailThumbnail>
                           </React.Fragment>
                         )}
-                      </>
+                      </React.Fragment>
                     ))}
                   </div>
                 </div>
@@ -110,9 +111,10 @@ export const DetailInfo: React.FC<IDetailInfoProps> = ({ data }) => {
                     {data.attributes.before_after.data.map((design, index) => (
                       <>
                         {index <= 4 && (
-                          <React.Fragment key={index}>
+                          <React.Fragment key={design.id}>
                             <DetailThumbnail
                               imgUrl={design.attributes.url}
+                              thumbUrls={data.attributes.before_after.data}
                             ></DetailThumbnail>
                           </React.Fragment>
                         )}

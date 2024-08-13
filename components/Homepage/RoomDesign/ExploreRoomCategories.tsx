@@ -1,6 +1,7 @@
 "use client";
 import { CategoryCard } from "@/components/Shared/CategoryCard";
 import { GridWrapper } from "@/components/Shared/GridWrapper";
+import { LoaderSpinner } from "@/components/Shared/LoaderSpinner";
 import { IProductQueryParams, IRoomCategory } from "@/lib/interfaces/icategory";
 import { getAllRoomCategory } from "@/lib/services/categoryServices";
 import { useQuery } from "@tanstack/react-query";
@@ -24,20 +25,7 @@ export const ExploreRoomCategories = () => {
   });
 
   if (query.isLoading) {
-    return (
-      <div className="relative flex justify-center ">
-        <div className="animate-pulse w-full">
-          <div className="rounded-sm bg-slate-200 h-[calc(100vh-89px)] w-full flex justify-center items-center ">
-            <Image
-              src="/images/loading.svg"
-              width={100}
-              height={100}
-              alt="loading"
-            />
-          </div>
-        </div>
-      </div>
-    );
+    return <LoaderSpinner></LoaderSpinner>;
   }
 
   const categories: IRoomCategory[] = query?.data?.data?.data;

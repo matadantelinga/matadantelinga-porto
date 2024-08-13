@@ -7,6 +7,7 @@ import Link from "next/link";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
+import { LoaderSpinner } from "../Shared/LoaderSpinner";
 
 const settings = {
   arrow: true,
@@ -40,20 +41,7 @@ export default function MainSlider() {
   });
 
   if (query.isLoading) {
-    return (
-      <div className=" relative flex justify-center ">
-        <div className="animate-pulse w-full">
-          <div className="rounded-sm bg-slate-200 h-[calc(100vh-89px)] w-full flex justify-center items-center ">
-            <Image
-              src="/images/loading.svg"
-              width={100}
-              height={100}
-              alt="loading"
-            />
-          </div>
-        </div>
-      </div>
-    );
+    return <LoaderSpinner></LoaderSpinner>;
   }
 
 

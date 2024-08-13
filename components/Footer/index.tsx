@@ -8,6 +8,7 @@ import { useSelectedLayoutSegment } from "next/navigation";
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { AskPrice } from "../AskPrice/AskPrice";
 import { iGeneralInfo } from "@/lib/interfaces/igeneral";
+import { LoaderSpinner } from "../Shared/LoaderSpinner";
 
 export default function Footer() {
   const pathName = useSelectedLayoutSegment();
@@ -18,20 +19,7 @@ export default function Footer() {
   });
 
   if (query.isLoading) {
-    return (
-      <div className="relative flex justify-center ">
-        <div className="animate-pulse w-full">
-          <div className="rounded-sm bg-slate-200 h-[calc(100vh-89px)] w-full flex justify-center items-center ">
-            <Image
-              src="/images/loading.svg"
-              width={100}
-              height={100}
-              alt="loading"
-            />
-          </div>
-        </div>
-      </div>
-    );
+    return <LoaderSpinner></LoaderSpinner>;
   }
 
   const dataContent: iGeneralInfo = query?.data?.data.data.attributes;

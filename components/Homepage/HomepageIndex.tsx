@@ -9,6 +9,7 @@ import MainSlider from "./MainSlider";
 import RoomDesign from "./RoomDesign/RoomDesign";
 import SearchMain from "./SearchMain";
 import WhyChoose from "./WhyChoose/WhyChoose";
+import { LoaderSpinner } from "../Shared/LoaderSpinner";
 
 export default function HomepageIndex() {
   const query = useQuery({
@@ -17,20 +18,7 @@ export default function HomepageIndex() {
   });
 
   if (query.isLoading) {
-    return (
-      <div className="relative flex justify-center ">
-        <div className="animate-pulse w-full">
-          <div className="rounded-sm bg-slate-200 h-[calc(100vh-89px)] w-full flex justify-center items-center ">
-            <Image
-              src="/images/loading.svg"
-              width={100}
-              height={100}
-              alt="loading"
-            />
-          </div>
-        </div>
-      </div>
-    );
+    return <LoaderSpinner></LoaderSpinner>;
   }
 
   const dataContent: IHomepageContent = query?.data?.data.data.attributes;

@@ -1,8 +1,11 @@
+import { useModalStore } from "@/hooks/useModal";
+import { EAlertTypeEnum } from "@/lib/enums/eAlertTypeEnums";
 import { IProdDetailImage } from "@/lib/interfaces/iproduct";
+import { showToast } from "@/lib/utils/common";
+import { useSession } from "next-auth/react";
+import Image from "next/image";
 import React from "react";
 import { GridWrapper } from "../Shared/GridWrapper";
-import Image from "next/image";
-import { useModalStore } from "@/hooks/useModal";
 import { DetailImageSlider } from "./DetailImageSlider";
 
 interface IDetailImageProps {
@@ -11,9 +14,22 @@ interface IDetailImageProps {
 
 export const DetailImage: React.FC<IDetailImageProps> = ({ dataImages }) => {
   const { openModal } = useModalStore();
+  const { data: session, status } = useSession({
+    required: false,
+  });
 
   const seeDetailImage = () => {
-    openModal(<DetailImageSlider dataImages={dataImages}></DetailImageSlider>);
+    if (session) {
+      openModal(
+        <DetailImageSlider dataImages={dataImages}></DetailImageSlider>
+      );
+    } else {
+      showToast(
+        EAlertTypeEnum.ERROR,
+        "Silahkan Login untuk melihat gambar.",
+        "thumbToast"
+      );
+    }
   };
 
   return (
@@ -63,7 +79,7 @@ export const DetailImage: React.FC<IDetailImageProps> = ({ dataImages }) => {
           ) : (
             <>
               <div className="col-span-12">
-                <div className="img-item main-image">
+                <div className="img-item main-image" onClick={seeDetailImage}>
                   <Image
                     src={`${
                       process.env.URL_MEDIA + dataImages[0]?.attributes.url
