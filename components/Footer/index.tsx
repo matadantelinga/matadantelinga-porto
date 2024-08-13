@@ -94,10 +94,10 @@ export default function Footer() {
               <h4>Planet Dekor</h4>
               <ul className="[&_a]:block [&_a]:py-1">
                 <li>
-                  <Link href="/">Area Jangkauan</Link>
+                  <Link href="/location">Area Jangkauan</Link>
                 </li>
                 <li>
-                  <Link href="/">Tanya Harga</Link>
+                  <Link href="/ask-price">Tanya Harga</Link>
                 </li>
                 <li>
                   <Link href="/privacy-policy">Kebijakan Privasi</Link>
