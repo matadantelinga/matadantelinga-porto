@@ -1,9 +1,12 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "../ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import axios from "axios";
+import { showToast } from "@/lib/utils/common";
+import { EAlertTypeEnum } from "@/lib/enums/eAlertTypeEnums";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -26,10 +29,40 @@ export function AskForm() {
       email: "",
     },
   });
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
+
+  const [message, setMessage] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | boolean | null>(
+    false
+  );
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    try {
+      const data = {
+        data: {
+          email: values.email,
+          name: values.name,
+          telp: values.telp,
+        },
+      };
+      const response = await axios.post(
+        `${process.env.URL_API}/askprices`,
+        data
+      );
+      setErrorMessage(false);
+      showToast(
+        EAlertTypeEnum.SUCCESS,
+        "Pesan Anda telah terkirim",
+        "successAsk"
+      );
+      form.reset();
+    } catch (error: any) {
+      console.error("Error:", error?.response.data.error.message);
+      showToast(
+        EAlertTypeEnum.ERROR,
+        `${error?.response.data.error.message}`,
+        "failedAsk"
+      );
+    }
   }
 
   return (

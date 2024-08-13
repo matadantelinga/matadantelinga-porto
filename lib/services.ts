@@ -21,9 +21,18 @@ export const getData = (url: string) =>
     });
 
 export const getDataOpen = (url: string) =>
-  
   axios
     .get(`${process.env.URL_API + url}`)
+    .then((res) => {
+      return res;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+
+export const postData = (url: string) =>
+  axios
+    .post(`${process.env.URL_API + url}`)
     .then((res) => {
       return res;
     })

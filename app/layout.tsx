@@ -6,6 +6,8 @@ import { Inter } from "next/font/google";
 import "./globals.scss";
 import ModalWrapper from "@/components/Shared/ModalWrapper";
 import { MobileNav } from "@/components/MobileNav";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,6 +32,7 @@ export default function RootLayout({
           <Basecontent>
             <Footer />
             <ModalWrapper />
+            <ToastContainer />
           </Basecontent>
         </body>
       </SessionWrapper>
