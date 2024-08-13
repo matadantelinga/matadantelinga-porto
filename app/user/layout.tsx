@@ -14,7 +14,6 @@ export default function RootLayout({ children, }: { children: React.ReactNode; }
         }
     });
 
-    console.log(pathName)
 
     return (
         <section className="wrapper my-10">
