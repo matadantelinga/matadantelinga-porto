@@ -110,4 +110,16 @@ export interface IPaginationInfo {
   hasNext: boolean;
 }
 
-
+export interface IStaticPageContent {
+  id: number;
+  attributes: {
+    title: string;
+    content: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    image: {
+      data: any; // Adjust type if you have more specific information about the `data` field
+    };
+  };
+}

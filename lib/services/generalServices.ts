@@ -7,3 +7,7 @@ export async function getGeneralInfo() {
 export async function askPrices() {
   return await postData(`/askprices`);
 }
+
+export async function getStaticPageData(id: number) {
+  return await getData(`/statics/${id}?populate=deep`);
+}
