@@ -1,11 +1,11 @@
 import Basecontent from "@/components/basecontent";
-import { TncIndex } from "@/components/Tnc/TncIndex";
+import { PrivacyIndex } from "@/components/Privacy/PrivacyIndex";
 
 export default function PrivacyPolicyPage() {
   return (
     <>
       <Basecontent>
-        <TncIndex></TncIndex>
+        <PrivacyIndex></PrivacyIndex>
       </Basecontent>
     </>
   );
