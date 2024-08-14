@@ -14,7 +14,7 @@ body {
   .slick-dots {
     @apply absolute bottom-20 right-0 left-0 z-10;
     @media (max-width: 767px) {
-      @apply absolute bottom-10 right-0 left-0 z-10;
+      @apply absolute bottom-2 right-0 left-0 z-10;
     }
   }
 }
