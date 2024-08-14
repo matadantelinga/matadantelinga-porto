@@ -9,7 +9,7 @@ export const PrivacyIndex = () => {
   const query = useQuery({
     queryKey: ["qPrivacy"],
     queryFn: () => {
-      return getStaticPageData(1);
+      return getStaticPageData(2); // Add static page id
     },
   });
 

@@ -9,7 +9,7 @@ export const TncIndex = () => {
   const query = useQuery({
     queryKey: ["qTnc"],
     queryFn: () => {
-      return getStaticPageData(1);
+      return getStaticPageData(1); // Add static page id
     },
   });
 
