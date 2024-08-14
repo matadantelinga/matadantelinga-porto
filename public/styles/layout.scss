@@ -391,3 +391,12 @@ footer {
 .Toastify__toast-body {
   font-size: 0.85rem;
 }
+
+.static-page-content {
+  ul {
+    padding-left: 18px;
+    li {
+      list-style: disc;
+    }
+  }
+}

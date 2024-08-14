@@ -17,7 +17,7 @@ export const StaticContent: React.FC<IStaticContentProps> = ({
         <SectionTitle className="mb-4">{title}</SectionTitle>
         <GridWrapper>
           <div className="col-span-12">
-            <div className="terms-content">
+            <div className="static-page-content">
               <div
                 dangerouslySetInnerHTML={{
                   __html: content.replace(/<p>&nbsp;<\/p>/g, ""),
