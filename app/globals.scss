@@ -3,49 +3,13 @@
 @import "tailwindcss/utilities";
 
 body {
-  @apply text-c-black bg-slate-100 dark:text-slate-50 dark:bg-slate-900 text-[16px];
+  font-family: "Kanit", sans-serif !important;
 }
 
 .wrapper {
   @apply w-full max-w-[1296px] mx-auto px-2;
 }
-
-.mainslider {
-  .slick-dots {
-    @apply absolute bottom-20 right-0 left-0 z-10;
-    @media (max-width: 767px) {
-      @apply absolute bottom-2 right-0 left-0 z-10;
-    }
-  }
-}
-
-.detail-images-wrapper {
-  .slick-dots {
-    @apply absolute bottom-5 right-0 left-0 z-10;
-    @media (max-width: 767px) {
-      @apply absolute bottom-5 right-0 left-0 z-10;
-    }
-  }
-}
-
-.mainslider,
-.detail-images-wrapper {
-  .slick-dots {
-    li {
-      @apply w-[40px] h-[6px] bg-yellow-50;
-      &.slick-active {
-        @apply bg-c-yellow;
-      }
-      button {
-        @apply w-[40px] h-[6px] opacity-0;
-        &::before {
-          @apply w-[40px] h-[6px];
-        }
-      }
-    }
-  }
-}
-
+@import "/public/fonts/fonts.scss";
 @import "/public/styles/layout.scss";
 @import "/public/styles/home.scss";
 @import "/public/styles/pageBanner.scss";

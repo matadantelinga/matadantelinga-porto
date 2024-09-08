@@ -40,6 +40,7 @@ module.exports = {
         "c-white": "#ffffff",
         "c-gray2": "#F7F7F7",
         "c-orange": "#FFC550",
+        "c-blue": "#2352CB",
       },
     },
   },

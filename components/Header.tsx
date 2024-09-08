@@ -18,21 +18,12 @@ export default function Header() {
   return (
     <header className="sticky top-0 bg-white z-20 ">
       <div className="wrapper flex items-center justify-between py-3">
-        <nav className="relative flex items-center gap-11">
+        <div className="relative flex items-center gap-11">
           <Link className="logo" href="/">
-            <Image src="/images/logo.png" width={66} height={66} alt="logo" />
+            <Image src="/images/logo.svg" width={66} height={66} alt="logo" />
           </Link>
-          <ul className="flex items-center font-medium text-sm gap-10 md-only">
-            {NavMenus.map((menu, index) => (
-              <React.Fragment key={index}>
-                <li>
-                  <Link href={menu.link}>{menu.name}</Link>
-                </li>
-              </React.Fragment>
-            ))}
-          </ul>
-        </nav>
-        <div className="relative gap-3 flex">
+        </div>
+        <nav className="relative gap-3 flex">
           {status !== "loading" ? (
             session ? (
               <>
@@ -51,20 +42,19 @@ export default function Header() {
               </>
             ) : (
               <>
-                <Button
-                  variant="outline"
-                  onClick={() => router.push(`/author/login`)}
-                >
-                  {" "}
-                  Login
-                </Button>
-                <Button onClick={() => router.push(`/author/register`)}>
-                  Create Account
-                </Button>
+                <ul className="flex items-center font-medium text-sm gap-10 md-only">
+                  {NavMenus.map((menu, index) => (
+                    <React.Fragment key={index}>
+                      <li>
+                        <Link href={menu.link}>{menu.name}</Link>
+                      </li>
+                    </React.Fragment>
+                  ))}
+                </ul>
               </>
             )
           ) : null}
-        </div>
+        </nav>
       </div>
     </header>
   );

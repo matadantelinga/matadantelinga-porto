@@ -72,7 +72,7 @@ export default function LoginPage() {
             <div className="w-full max-w-[500px] mx-auto p-8 bg-white text-c-black rounded-lg">
                 <div className="flex justify-center">
                     <Image
-                        src={"/images/logo.png"}
+                        src={"/images/logo.svg"}
                         width={90}
                         height={90}
                         alt="Planet Dekor"

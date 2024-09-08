@@ -10,11 +10,20 @@ export const NavMenus: IMenuItem[] = [
     link: "/portofolio",
   },
   {
-    name: "Area Jangkauan",
-    link: "/location",
+    name: "Contact",
+    link: "/contact",
+  },
+];
+
+export const SocialMenus: IMenuItem[] = [
+  {
+    name: "Instagram",
+    link: "instagram.com",
+    icon: "<FaInstagram></FaInstagram>",
   },
   {
-    name: "Tanya Harga",
-    link: "/ask-price",
+    name: "LinkedIn",
+    link: "linkedin.com",
+    icon: "<FaLinkedin></FaLinkedin>",
   },
 ];
