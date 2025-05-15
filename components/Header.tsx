@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
@@ -14,9 +14,20 @@ export default function Header() {
     required: false,
   });
 
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const router = useRouter();
   return (
-    <header className="sticky top-0 bg-white z-20 ">
+    <header className={`sticky top-0 bg-white z-20 ${scrolled && "shadow-sm"}`}>
       <div className="wrapper flex items-center justify-between py-3">
         <div className="relative flex items-center gap-11">
           <Link className="logo" href="/">
