@@ -1,5 +1,4 @@
 import Basecontent from "@/components/basecontent";
-import { PortfolioDetailIndex } from "@/components/Portofolio/PortofolioDetailIndex";
 
 const PortfolioDetail = ({
   params,
@@ -8,7 +7,7 @@ const PortfolioDetail = ({
 }) => {
   return (
     <Basecontent>
-      <PortfolioDetailIndex slug={params.slug}></PortfolioDetailIndex>
+      <></>
     </Basecontent>
   );
 };

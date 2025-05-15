@@ -1,28 +1,7 @@
 "use client";
-import { iGeneralInfo } from "@/lib/interfaces/igeneral";
-import { getGeneralInfo } from "@/lib/services/generalServices";
-import { useQuery } from "@tanstack/react-query";
 import moment from "moment";
-import Image from "next/image";
-import Link from "next/link";
-import { useSelectedLayoutSegment } from "next/navigation";
-import { FaInstagram, FaWhatsapp } from "react-icons/fa";
-import { LoaderSpinner } from "../Shared/LoaderSpinner";
 
 export default function Footer() {
-  const pathName = useSelectedLayoutSegment();
-
-  const query = useQuery({
-    queryKey: ["qGeneralInfo"],
-    queryFn: getGeneralInfo,
-  });
-
-  if (query.isLoading) {
-    return <LoaderSpinner></LoaderSpinner>;
-  }
-
-  const dataContent: iGeneralInfo = query?.data?.data.data.attributes;
-
   return (
     <>
       <footer className="relative">
