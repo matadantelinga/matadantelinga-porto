@@ -1,22 +1,28 @@
 "use client";
 
+import { Contact } from "./ContactSection";
 import { MainSection } from "./MainSection";
+import { SelectedProject } from "./SelectedProject/SelectedProject";
 import { WhatWeDo } from "./WhatWeDo";
 
 export default function HomepageIndex() {
   return (
     <>
-      <section className="wrapper">
+      <section className="wrapper py-10">
         <MainSection></MainSection>
       </section>
-      <section className="wrapper bg-c-grap py-10">
-        <WhatWeDo></WhatWeDo>
+      <section className="bg-c-gray py-10">
+        <div className="wrapper">
+          <WhatWeDo></WhatWeDo>
+        </div>
       </section>
-      <section className="bg-c-black2 py-10">
-        <div className="wrapper"></div>
+      <section className="wrapper">
+        <SelectedProject></SelectedProject>
       </section>
-      <section className="half-bg-black why-us">
-        <div className="wrapper py-10"></div>
+      <section className="bg-c-light-blue py-10">
+        <div className="wrapper ">
+          <Contact />
+        </div>
       </section>
       <section className="wrapper py-10"></section>
     </>

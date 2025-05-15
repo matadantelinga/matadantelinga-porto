@@ -8,18 +8,6 @@ header {
   }
 }
 
-.mainslider {
-  .h-\[calc\(100vh-89px\)\] {
-    @media (max-width: 767px) {
-      height: 230px;
-
-      img {
-        object-position: left;
-      }
-    }
-  }
-}
-
 .section-title {
   @media (max-width: 767px) {
     font-size: 1.5rem;
@@ -32,50 +20,6 @@ header {
     @media (max-width: 767px) {
       padding-top: 1rem;
       padding-bottom: 1rem;
-    }
-  }
-}
-
-.search-bar-wrapper {
-  @media (max-width: 767px) {
-    display: none;
-    z-index: 99;
-    .flex.justify-between.w-full {
-      flex-wrap: wrap;
-    }
-    .search-item-btn {
-      width: 100%;
-      margin-bottom: 10px;
-      &:last-child {
-        margin-bottom: 0;
-      }
-      .icon {
-        flex: 0 0 auto;
-      }
-
-      .selection-btn {
-        flex: 1;
-      }
-      select {
-        width: 100%;
-        border: solid 0.5px #a8a8a8;
-        border-radius: 7px;
-        padding: 5px 10px;
-      }
-    }
-    .h-\[100px\] {
-      height: fit-content;
-    }
-    .rounded-full {
-      border-radius: 10px;
-      width: 100%;
-      z-index: 99;
-      position: relative;
-      border-radius: 0;
-    }
-
-    button {
-      width: 100%;
     }
   }
 }
@@ -107,49 +51,6 @@ header {
   }
 }
 
-.ask-price {
-  display: flex;
-  flex-wrap: wrap;
-  &__banner,
-  &__form {
-    padding: 2rem 1.5rem;
-    flex: 0 0 50%;
-    max-width: 50%;
-  }
-  &__banner {
-    text-align: center;
-    position: relative;
-
-    &::before {
-      width: 100%;
-      height: 25%;
-      content: "";
-      background-color: #ffc550;
-      position: absolute;
-      z-index: 1;
-      bottom: 0;
-      left: 0;
-    }
-    .image-wrapper {
-      margin-top: 2rem;
-      position: relative;
-      z-index: 3;
-      img {
-        max-width: 100%;
-        margin: auto;
-      }
-    }
-  }
-
-  @media (max-width: 767px) {
-    &__banner,
-    &__form {
-      flex: 100%;
-      max-width: 100%;
-    }
-  }
-}
-
 .tab-wrapper {
   max-width: 100%;
   .icon-menu-list {
@@ -165,6 +66,7 @@ header {
     }
   }
 }
+
 .icon-menu-list {
   margin-top: 1rem;
   li {
@@ -397,6 +299,20 @@ footer {
     padding-left: 18px;
     li {
       list-style: disc;
+    }
+  }
+}
+
+.section-title {
+  &.has-line {
+    &::after {
+      content: "";
+      height: 5px;
+      width: 50px;
+      border-radius: 10px;
+      background-color: #2352cb;
+      display: block;
+      margin: 10px auto 0;
     }
   }
 }

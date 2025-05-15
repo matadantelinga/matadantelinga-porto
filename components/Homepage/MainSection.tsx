@@ -6,13 +6,16 @@ import { Button } from "../ui/button";
 export const MainSection = () => {
   return (
     <>
-      <GridWrapper>
+      <GridWrapper className="main-section">
         <div className="col-span-6">
+          <div className="icon up">
+            <img src="/icons/icon-buble-1.svg" alt="" />
+          </div>
           <h3 className="text-c-blue font-medium text-lg">Hi, Im Indra</h3>
           <SectionTitle className="font-medium">
             Frontend Developer, UI & Logo Designer
           </SectionTitle>
-          <div className="main-content ">
+          <div className="main-content">
             <p className="py-2">
               Skilled front-end developer with 5+ years of experience,
               proficient in modern frameworks like Angular and Next.js. Let's
@@ -36,6 +39,9 @@ export const MainSection = () => {
                 </li>
               </ul>
             </div>
+          </div>
+          <div className="icon bottom">
+            <img src="/icons/icon-buble-2.svg" alt="" />
           </div>
         </div>
         <div className="col-span-6">
