@@ -36,7 +36,7 @@ export const Projects: IProjectItem[] = [
       "Artam ID",
     name: "Artam.id",
     images: [
-      { id: 1, url: "projects/Artam1.jpg" },
+      { id: 1, url: "projects/artam1.jpg" },
     ],
     category: {
       id: 1,
