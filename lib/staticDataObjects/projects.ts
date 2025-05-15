@@ -36,7 +36,7 @@ export const Projects: IProjectItem[] = [
       "Artam ID",
     name: "Artam.id",
     images: [
-      { id: 1, url: "projects/artam1.jpg" },
+      { id: 1, url: "projects/artambook.jpg" },
     ],
     category: {
       id: 1,
@@ -49,7 +49,7 @@ export const Projects: IProjectItem[] = [
       "Angkasa Pura",
     name: "PT. Angkasa Pura II",
     images: [
-      { id: 1, url: "projects/ap1.jpg" },
+      { id: 1, url: "projects/apbook.jpg" },
     ],
     category: {
       id: 1,
