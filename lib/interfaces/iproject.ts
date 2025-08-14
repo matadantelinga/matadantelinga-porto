@@ -14,4 +14,5 @@ export interface IProjectItem {
   id: number;
   description: string;
   category: IProjectCategory;
+  slug: string;
 }

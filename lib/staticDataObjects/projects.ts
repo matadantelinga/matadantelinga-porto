@@ -14,6 +14,7 @@ export const Projects: IProjectItem[] = [
       id: 1,
       name: "Web Development",
     },
+    slug: "planet-dekor",
   },
   {
     id: 2,
@@ -29,31 +30,28 @@ export const Projects: IProjectItem[] = [
       id: 1,
       name: "Branding",
     },
+    slug: "sumindo",
   },
   {
     id: 3,
-    description:
-      "Artam ID",
+    description: "Artam ID",
     name: "Artam.id",
-    images: [
-      { id: 1, url: "projects/artambook.jpg" },
-    ],
+    images: [{ id: 1, url: "projects/artambook.jpg" }],
     category: {
       id: 1,
       name: "Design",
     },
+    slug: "artam-id",
   },
   {
     id: 4,
-    description:
-      "Angkasa Pura",
+    description: "Angkasa Pura",
     name: "PT. Angkasa Pura II",
-    images: [
-      { id: 1, url: "projects/apbook.jpg" },
-    ],
+    images: [{ id: 1, url: "projects/apbook.jpg" }],
     category: {
       id: 1,
       name: "Design",
     },
+    slug: "angkasa-pura",
   },
 ];

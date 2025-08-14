@@ -24,7 +24,7 @@ export const MainSection = () => {
             </p>
             <div className="social-btn flex gap-2 items-center">
               <Button>
-                <FaEnvelope className="me-1"></FaEnvelope> Email Me
+                <FaEnvelope className="me-1"></FaEnvelope> Hire Me
               </Button>
               <ul className="flex gap-2">
                 <li>

@@ -1,4 +1,6 @@
+"use client";
 import { IProjectItem } from "@/lib/interfaces/iproject";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 interface IPorjectCardProps {
@@ -6,9 +8,14 @@ interface IPorjectCardProps {
 }
 
 export const ProjectCard: React.FC<IPorjectCardProps> = ({ project }) => {
+  const router = useRouter();
+
+  const seeProjectDetail = (slug: string) => {
+    router.push(`/portofolio/${slug.replace("/", "")}`);
+  };
   return (
     <>
-      <div className="item">
+      <div className="item" onClick={() => seeProjectDetail(project.slug)}>
         <div className="item__image">
           <img src={project.images[0].url} alt={project.name}></img>
         </div>
