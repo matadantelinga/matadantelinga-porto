@@ -1,5 +1,5 @@
 import { ColWrapper } from "../Shared/ColWrapper";
-import { GridWrapper } from "../Shared/GridWrapper";
+import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 
@@ -23,6 +23,11 @@ export const ContactForm = () => {
           <div className="input-group">
             <label className="block mb-4">Your Message</label>
             <Textarea />
+          </div>
+        </ColWrapper>
+        <ColWrapper>
+          <div className="text-end mb-4">
+            <Button>Submit</Button>
           </div>
         </ColWrapper>
       </form>

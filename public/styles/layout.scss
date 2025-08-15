@@ -316,3 +316,14 @@ footer {
     }
   }
 }
+
+.social-btn {
+  ul {
+    li {
+      display: inline-block;
+      &:hover {
+        @include bounce-animation(1s, 0s, 3);
+      }
+    }
+  }
+}

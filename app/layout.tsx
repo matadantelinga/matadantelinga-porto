@@ -1,15 +1,15 @@
-import Footer from "@/components/Footer";
+import Footer from "@/components/Footer/footer-index";
 import Header from "@/components/Header";
+import { MobileNav } from "@/components/MobileNav";
 import SessionWrapper from "@/components/SessionWrapper";
+import ModalWrapper from "@/components/Shared/ModalWrapper";
 import Basecontent from "@/components/basecontent";
 import { Inter } from "next/font/google";
-import "./globals.scss";
-import ModalWrapper from "@/components/Shared/ModalWrapper";
-import { MobileNav } from "@/components/MobileNav";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import Head from "next/head";
 import Link from "next/link";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./globals.scss";
 
 const inter = Inter({ subsets: ["latin"] });
 

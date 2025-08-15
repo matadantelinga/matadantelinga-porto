@@ -1,7 +1,8 @@
-import { FaEnvelope, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaEnvelope } from "react-icons/fa";
 import { GridWrapper } from "../Shared/GridWrapper";
-import { SectionTitle } from "../Shared/SectionTitle";
+import { SocialButtons } from "../Shared/SocialButtons";
 import { Button } from "../ui/button";
+import TypingAnimation from "./TypingAnimation";
 
 export const MainSection = () => {
   return (
@@ -12,32 +13,19 @@ export const MainSection = () => {
             <img src="/icons/icon-buble-1.svg" alt="" />
           </div>
           <h3 className="text-c-blue font-medium text-lg">Hi, Im Indra</h3>
-          <SectionTitle className="font-medium">
-            Frontend Developer, UI & Logo Designer
-          </SectionTitle>
+          <TypingAnimation />
           <div className="main-content">
-            <p className="py-2">
+            <p className="py-4">
               Skilled front-end developer with 5+ years of experience,
               proficient in modern frameworks like Angular and Next.js. Let's
               team up to bring your ideas to life and create something
               exceptional!
             </p>
-            <div className="social-btn flex gap-2 items-center">
+            <div className="social-btn flex gap-4 items-center">
               <Button>
                 <FaEnvelope className="me-1"></FaEnvelope> Hire Me
               </Button>
-              <ul className="flex gap-2">
-                <li>
-                  <a className="text-c-black2" href="#">
-                    <FaInstagram size={22}></FaInstagram>
-                  </a>
-                </li>
-                <li>
-                  <a className="text-c-black2" href="#">
-                    <FaLinkedin size={22}></FaLinkedin>
-                  </a>
-                </li>
-              </ul>
+              <SocialButtons showOnlyMain />
             </div>
           </div>
           <div className="icon bottom">

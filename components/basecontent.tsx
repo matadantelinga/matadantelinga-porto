@@ -11,7 +11,7 @@ interface iBase {
 export default function Basecontent(props: iBase) {
   return (
     <QueryClientProvider client={queryClient}>
-      <div>{props.children}</div>
+      {props.children}
     </QueryClientProvider>
   );
 }

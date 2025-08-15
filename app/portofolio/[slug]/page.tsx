@@ -1,6 +1,9 @@
 "use client";
+import { ImageSlider } from "@/components/Portofolio/ImageSlider";
 import { ColWrapper } from "@/components/Shared/ColWrapper";
 import { GridWrapper } from "@/components/Shared/GridWrapper";
+import { LoaderSpinner } from "@/components/Shared/LoaderSpinner";
+import { SectionTitle } from "@/components/Shared/SectionTitle";
 import { SectionWrapper } from "@/components/Shared/SectionWrapper";
 import { fetchProjectBySlug } from "@/lib/services/projectService";
 import { useQuery } from "@tanstack/react-query";
@@ -14,7 +17,7 @@ const PortofolioDetailPage = () => {
     queryFn: () => fetchProjectBySlug(slug as string),
   });
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <LoaderSpinner />;
   if (!project) return <p>Project not found</p>;
 
   return (
@@ -22,19 +25,12 @@ const PortofolioDetailPage = () => {
       <SectionWrapper>
         <GridWrapper>
           <ColWrapper>
-            <div style={{ display: "flex", gap: "1rem" }}>
-              {project.images.map((img) => (
-                <img
-                  key={img.id}
-                  src={`/${img.url}`}
-                  alt={project.name}
-                  width={300}
-                />
-              ))}
+            <div className="detail-images-wrapper">
+              <ImageSlider images={project.images} />
             </div>
           </ColWrapper>
           <ColWrapper>
-            <h1>{project.name}</h1>
+            <SectionTitle title={project.name}>{project.name}</SectionTitle>
             <p>{project.description}</p>
           </ColWrapper>
         </GridWrapper>

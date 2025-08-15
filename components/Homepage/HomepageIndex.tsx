@@ -13,7 +13,9 @@ export default function HomepageIndex() {
         <MainSection></MainSection>
       </SectionWrapper>
       <SectionWrapper isMainWrapper={false} className="bg-c-gray py-10">
-        <WhatWeDo></WhatWeDo>
+        <div className="wrapper">
+          <WhatWeDo></WhatWeDo>
+        </div>
       </SectionWrapper>
       <SectionWrapper>
         <SelectedProject></SelectedProject>
